@@ -5,12 +5,16 @@
 	<div class="about" style="background-color: #fff; margin-right: -5%;">
 	<div class="container">
 		<div class="about-main">
-			    <div class="about-top">
-					<h2>HISTORY</h2>
-					</div>
+			<div class="head-banner clearfix">
+					<div class="wrapper">
+						<h1>ABOUT US</h1>
+						<div class="clear"></div>
+					</div>				
+			</div>	
+		<!-- BANNER END -->
+		<!-- ABOUT BOTTOM -->
 				<div class="about-bottom">
 					<div class="col-md-7 about-left">
-						<h6><!--<a href="single.html">Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci donec.</a>--></h6>
 						<p>Kung ating babalikan ang panahon bago dumating ang Kastila (1521), mayroon ng mga barangay (villages) na binubuo ng mga tatlumpu (30) hanggang isang daang (100) pamilya at ito ay pinamumunuan ng "datu". Ang pinunong ito ang siyang humahawak ng lehislatibo, ehekutibo at judicial na kapangyarihan para sa kanyang pinanghahawakang barangay.
  Dumaan ang ibat-ibang pangulo ng Pilipinas, at nang dumating ang panahon ng dating Pangulong Ferdinand Marcos, lalong pinalakas ang barangayan. Ang pagtatalga ng mga namumuno ng barangay noon na kinalaunan ay tinawag na Kapitan de Barangay, ay hindi pa idinadaan sa halalan
 Sa barangay na ito, ang kauna-unahang Barangay Chairman ay isang babae, sa katauhan nng dating Kgg. Consolacion Lucas. Humigit-kumulang tatlumpu (30) lamang ang bilang ng pamilyang naninirahan sa lugar na ito ng Old Sta. Mesa, na ngayon ay Barangay 599 na.
@@ -21,10 +25,7 @@ Sa barangay na ito, ang kauna-unahang Barangay Chairman ay isang babae, sa katau
 						<a href="single.html" >
 							<img src="{{ asset('assets/images/1.jpg')}}" alt="" class="img-responsive ">
 						</a>								
-					</div>
-					
-
-					
+					</div>	
 				<div class="clearfix"> </div>
 			</div>
 		</div>
