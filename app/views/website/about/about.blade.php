@@ -29,8 +29,10 @@ Sa barangay na ito, ang kauna-unahang Barangay Chairman ay isang babae, sa katau
 				<div class="clearfix"> </div>
 			</div>
 		</div>
-		<div class="team-mem">
+		<div class="title">
 			 <h1><img src="{{ asset('assets/images/o.png')}}" alt="" style="margin-top: -5px;"> OFFICIALS</h1>
+		</div>
+		<div class="team-mem">
 			<div class="col-md-3 team-grid">
 				<img src="{{ asset('assets/images/t1.jpg')}}" style="border: 2px solid black;"  alt="" class="img-responsive">
 				    <ul class="img-social-stags">
