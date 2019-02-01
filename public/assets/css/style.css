@@ -640,7 +640,9 @@ span.local {
 .head-banner img {
 	float:center;
 }
-/*------------------*/
+/*--------- END OF ABOUT NEW CODE ---------*/
+
+/*--------- TEAM MEMBER OLD CODE------------
 .team-mem {
   margin: 5em 0em 5em 0em;
 }
@@ -656,8 +658,32 @@ span.local {
   font-family: 'PatuaOne-Regular';
   text-align: center;
   margin: 0em 0em 1em 0em;
+}*/
+
+.team-mem {
+	margin: 5em 0em 5em 0em
 }
+.team-mem img:hover {
+	filter: opacity(65%);
+}
+.title {
+  font-size: 2.5em;
+  color: #2d598a;
+  font-family: 'PatuaOne-Regular';
+  text-align: center;
+  margin: 0em 0em 1em 0em;
+}
+
+.team-mem p{
+	font-style: 'PatuaOne-Regular';
+	color: #2d598a;
+}
+/*----- END OF NEW TEAM MEMBER CODE -----*/
+
 /*----- img-social-stags -----*/
+
+/*--------- NEW TEAM MEMBER CODE ---------*/
+
 ul.img-social-stags{
 	margin:0;
 	padding:0;
@@ -685,9 +711,9 @@ ul.img-social-stags li a.facebook span{
 	display:block;
 }
 ul.img-social-stags li a:hover{
-	opacity:0.8;
+	filter:invert(80%);
 }
-/*--about end here--*/
+/*--About End Here--*/
 /*--single--*/
 .lone-line {
   padding: 2em 0em 0em 0em;
