@@ -660,6 +660,7 @@ span.local {
   margin: 0em 0em 1em 0em;
 }*/
 
+/*--------- TEAM MEMBER NEW CODE------------*/
 .team-mem {
 	margin: 5em 0em 5em 0em
 }
@@ -673,7 +674,6 @@ span.local {
   text-align: center;
   margin: 0em 0em 1em 0em;
 }
-
 .team-mem p{
 	font-style: 'PatuaOne-Regular';
 	color: #2d598a;
@@ -681,9 +681,6 @@ span.local {
 /*----- END OF NEW TEAM MEMBER CODE -----*/
 
 /*----- img-social-stags -----*/
-
-/*--------- NEW TEAM MEMBER CODE ---------*/
-
 ul.img-social-stags{
 	margin:0;
 	padding:0;
