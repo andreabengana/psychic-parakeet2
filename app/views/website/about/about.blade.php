@@ -51,7 +51,7 @@ Sa barangay na ito, ang kauna-unahang Barangay Chairman ay isang babae, sa katau
 							<div class="clearfix"> </div>
 					</ul>
 				<br>	
-				<p><center> BARANGAY SECRETARY </center></p>
+				<h3><center> BARANGAY SECRETARY </center></h3>
 			</div>
 			<div class="col-md-3 team-grid">
 				<img src="{{ asset('assets/images/t3.jpg')}}" style="border: 2px solid black;" alt="" class="img-responsive">
@@ -61,7 +61,7 @@ Sa barangay na ito, ang kauna-unahang Barangay Chairman ay isang babae, sa katau
 							<div class="clearfix"> </div>
 					</ul>
 				<br>
-				<p><center> BARANGAY KAGAWAD </center></p>
+				<h3><center> BARANGAY KAGAWAD </center></h3>
 			</div>
 			<div class="col-md-3 team-grid">
 				<img src="{{ asset('assets/images/t4.jpg')}}" style="border: 2px solid black;"  alt="" class="img-responsive">
@@ -71,7 +71,7 @@ Sa barangay na ito, ang kauna-unahang Barangay Chairman ay isang babae, sa katau
 							<div class="clearfix"> </div>
 					</ul>
 				<br>
-				<p><center> BARANGAY KAGAWAD </center></p>
+				<h3><center> BARANGAY KAGAWAD </center></h3>
 			</div>
 		   <div class="clearfix"> </div>
 		</div>

@@ -620,7 +620,7 @@ span.local {
 }
 .head-banner {
 	background: url(../images/asian.jpg)no-repeat;
-	min-height: 125px;
+	min-height: 150px;
 	background-size: cover;
 	padding: 1.5em 1.5em 2em 2em;
 }
@@ -630,10 +630,10 @@ span.local {
 	color:#fff;
 	font-weight:300;
 	background:#fc5c5c;
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	border-radius:5px;
-	padding:10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	padding:20px;
 	float:left;
 	margin:30px 0;
 }
@@ -662,21 +662,29 @@ span.local {
 
 /*--------- TEAM MEMBER NEW CODE------------*/
 .team-mem {
-	margin: 5em 0em 5em 0em
+	margin: 5em 0em 5em 0em;
+	background: url(../images/advanc.jpg)no-repeat;
+	background-size: cover;
 }
 .team-mem img:hover {
-	filter: opacity(65%);
+	filter: drop-shadow(5px 5px 10px #fff);
+	color: #2d598a;
 }
 .title {
   font-size: 2.5em;
   color: #2d598a;
   font-family: 'PatuaOne-Regular';
   text-align: center;
-  margin: 0em 0em 1em 0em;
+  margin: 1em 1em;
 }
-.team-mem p{
-	font-style: 'PatuaOne-Regular';
+.team-mem h3{
+	font-family: 'Montserrat';
 	color: #2d598a;
+	background:#2d598a;
+	padding:10px;
+	color:#fff;
+	font-size:18px;
+	font-weight:300;
 }
 /*----- END OF NEW TEAM MEMBER CODE -----*/
 
@@ -705,7 +713,7 @@ ul.img-social-stags li a.facebook span{
 	background-position: -53px -4px;
 }
 .team-grid:hover ul.img-social-stags{
-	display:block;
+	display:inline-block;
 }
 ul.img-social-stags li a:hover{
 	filter:invert(80%);
