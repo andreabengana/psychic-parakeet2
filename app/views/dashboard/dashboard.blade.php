@@ -12,7 +12,7 @@
          <div class="box-body">
               <div class="well" style="background-color: #007acc; color:white;">
                 <div class="col-md-8">
-                  <h4><i class="fa fa-sun-o"></i>  Good Day, <b>{{ Session::get('firstname') }} {{ Session::get('lastname') }}</b>!
+                  <h4><i class="fa fa-sun-o"></i>  Good Day MATE, <b>{{ Session::get('firstname') }} {{ Session::get('lastname') }}</b>!
                   <h5>Barangay {{ Session::get('position') }}</h5>
                 </div><br>
 
