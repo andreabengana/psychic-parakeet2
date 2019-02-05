@@ -155,6 +155,15 @@
       </div>
  
     </form>
+	
+	<button onclick="goBack()" type="submit" class="btn btn-primary btn-block btn-flat" id = "btn" name = "btn">Back</button>
+	
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+	
     </div>
     <!-- /.social-auth-links -->
 
