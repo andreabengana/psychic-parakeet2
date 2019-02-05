@@ -662,7 +662,7 @@
                             },
                       dataType: 'JSON',
                       success: function(data){
-												alert('Records are successfully added!');
+
 												tbl.clear().draw();
 
                         $.each(data.res, function(key, val){
@@ -725,7 +725,8 @@
                     $('#txtOccupation'+i).val("");
                     $('#txtSalary'+i).val("");
 
-
+										if(i == x)
+											alert('Records are successfully added!');
 
                	}//for
                });
