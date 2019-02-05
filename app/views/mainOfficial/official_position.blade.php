@@ -78,11 +78,11 @@
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id = "offName">
                         @foreach($oPosition as $op)
-                            <tr>
+                            <tr >
                               <td>{{ $op -> OfficialPositionID }}</td>
-                              <td>{{ $op -> OfficialPosition }}</td>
+                              <td >{{ $op -> OfficialPosition }}</td>
                               <td>{{ $op -> OfficialPositionCount }}</td>
                               <td>
                                 <button class="btn btn-xs btn-success btn-flat" 
@@ -222,40 +222,100 @@
 
               <script  id = "hey" src="{{ asset ('bower_components/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js') }}" ></script>
               <script >
+				
                 $(document).ready(function(){
                   var tbl = $('#example1').DataTable();
+					
+					
 
                   $('#btnSubmit').click(function(e){
                     $('#Messages').html('');
-                    e.preventDefault();
+					var count=0;
+					var stringTempo;
+					var isStart = false;
+					var arrPosition = [];
+					
+					var isAlreadyAdded = false;
+					
+					
+					var elements = $('#offName').children();
+					var trElements =  elements.children();
+                     $.each(trElements, function( index, value ) {
+						stringTempo =  value.innerText;
+							
+						if(count == 3 && isStart){
+							//alert(stringTempo);
+							arrPosition.push(stringTempo);
+							count = 0;
+						}
+						else{
+							
+							 count++;
+							 if(count == 2 && !isStart){
+								// alert(stringTempo);
+								 arrPosition.push(stringTempo);
+								 count = 0;
+								isStart = true;
+							}
+						}
+						
+					});
+					 
                     var posName = $('#txtOPosition').val();
                     var posNum = $('#txtOPNumber').val();
-                    
-
-                    $.ajax({
+                   
+					$.each(arrPosition, function( index, value ) {
+						
+						if(value == posName){
+							alert("THERE IS AN EXISTING ENTRY!");
+							isAlreadyAdded = true;
+							
+						}
+					});
+					
+					
+					if(!isAlreadyAdded){
+                    var $myRequest = $.ajax({
+						
                       type: 'POST',
                       url: 'addOfficialPosition',
                       data: {posName: posName, 
                               posNum: posNum},
-                      dataType: 'JSON',
-                      success: function(data){
+					  beforeSend : function(){
+						
+						
+					  },	
+                      success:  function(data){
+						  var count = 0;
+						 
+						   
+						e.preventDefault();
                         tbl.clear().draw();
-
+							
+							 
                         $.each(data.position, function(key, val){
-                          tbl.row.add([
+							
+							  tbl.row.add([
 
-                            val.OfficialPositionID,
-                            val.OfficialPosition,
-                            val.OfficialPositionCount,
-                            '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" value = "'+val.OfficialPositionID+'" onclick = "modalEdit(this)"> <i class="fa fa-pencil"></i> </button> '+
+								val.OfficialPositionID,
+								val.OfficialPosition,
+								val.OfficialPositionCount,
+								'<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" value = "'+val.OfficialPositionID+'" onclick = "modalEdit(this)"> <i class="fa fa-pencil"></i> </button> '+
                                '<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" value = "'+val.OfficialPositionID+'" onclick = "modalDelete(this)"><i class="fa fa-remove"></i></button>'
 
 
                               ]).draw(false);
+						
                         }); 
-
+						
+						
+						
+						
+						
                       if (data.messages != null) {                        
-
+								
+							
+							
                             $('#Messages').append('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-ban"></i> Warning!</h4><b></b></div>');  
                               $('#Messages').fadeIn().delay(5000).fadeOut();
                         $.each(data.messages, function(key, val){
@@ -263,13 +323,18 @@
                         });
                       }
                        
-                      else {
+                      else if (!isAlreadyAdded) {
+						
                         $('#SuccessBox').html('<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Success!</h4>Record has been successfully added</div>');
                           $('#SuccessBox').fadeIn().delay(1000).fadeOut();  
                       }
                                           
                       }
-                    });                   
+					 
+                    }); 
+				  }
+					 
+					 
                     $('#txtOPosition').val("");
                     $('#txtOPNumber').val("");
                   });
