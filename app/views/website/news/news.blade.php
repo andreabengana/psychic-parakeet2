@@ -17,9 +17,9 @@
 							</ul>
 						</div>
 						<p>Dahil sa modernong teknolohiya  ng ating henerasyon ngayon, ay nagkaroon ng pagkakataon ang ating Barangay 599 na mailathala sa world-wide web (www.) ang ating unang website (www.sanggunian599.webnode.com)  noong 2009 na naglalaman ng mga impormasyom tungkol sa mga naunang administrasyon.</p>
- 		
+
 						<p>Dahil dito ay nagkaroon ng interes ang mga estudyante ng ibat' ibang unibersidad, partikular na ang PUP, Ateneo, San Beda, UP at CEU, at dinayo ang ating barangay para sa kanilang outreach programs, thesis, seminars &amp; trainings, medical and health missions.</p>
- 
+
 						<p>Gayundin ay naging focus of attention ang ating komunidad sa ilang mga ahensya ng gobyerno, private sectors, at mga media companies dahil sa mga aktibidades na nailathala dito na may kaugnayan sa kanilang mga misyon at proyekto. </p>
 
 
@@ -27,7 +27,7 @@
 				</div>
 					<div class=" single-profile">
 				<h4> Related Posts</h4>
-				<div class="single-left ">					
+				<div class="single-left ">
 					<div class="col-md-3 post-top">
 					<img class="img-responsive " src="{{ asset('assets/images/s1.jpg')}}" alt="">
 						<h6>Gift Giving</h6>
@@ -35,7 +35,7 @@
 					<div class="col-md-3 post-top">
 					<img class="img-responsive " src="{{ asset('assets/images/s2.jpg')}}" alt="">
 						<h6>PUP IT Students</h6>
-						
+
 					</div>
 					<div class="col-md-3 post-top">
 					<img class="img-responsive " src="{{ asset('assets/images/s3.jpg')}}" alt="">
@@ -49,8 +49,8 @@
 				</div>
 			</div>
 			<div class="single-bottom">
-		
-			<h3>Leave a Comment</h3>
+
+			<!--h3>Leave a Comment</h3>
 				<form>
 						<div class="col-md-6 comment">
 							<input type="text" placeholder="Name">
@@ -59,11 +59,11 @@
 							<input type="text" placeholder="email">
 						</div>
 						<div class="clearfix"> </div>
-							<textarea placeholder="Message" required=""></textarea>	
+							<textarea placeholder="Message" required=""></textarea>
 							<input type="submit" value="Send">
-						
-				</form>
-			
+
+				</form-->
+
 		</div>
 				</div>
 					<div class="col-md-3 categories-grid">
@@ -79,7 +79,7 @@
 				</div>
 			</div>
 				<div class="clearfix"> </div>
-			
+
 			</div>
 	</div>
 
