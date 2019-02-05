@@ -34,7 +34,7 @@ class LoginController extends BaseController {
 				->where('tblofficialaccount.Password', '=', Input::get('password'))
 				->get();
 
-var_dump($barangay);
+			var_dump($barangay);
 			Session::put('ID', $result2[0]->OfficialID);
 			Session::put('username', $username);
 			Session::put('password', $password);
@@ -93,7 +93,7 @@ var_dump($barangay);
 		}
 		else
 		{
-			return Redirect::to('/')
+			return Redirect::to('/login')
 				->with('messageLogin', 'User does not exists');
 		}
 	}
