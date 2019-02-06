@@ -5,7 +5,7 @@
 		<section class="content-header">
             <h1>
               Maintenance <small>  </small>
-              
+
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Maintenance</a></li>
@@ -30,13 +30,13 @@
                 <!-- form start -->
                 <form role="form" method = POST name = "resident_maint">
                   <div class="box-body">
-                   
+
                     <div class="col-md-12">
                      <div class="well">
 
                         <div class="form-group">
                           <div class="row">
-                            
+
                             <div class="col-xs-4">
                              <label>Search</label>
                              <select class="form-control"
@@ -71,7 +71,7 @@
                             </div>
 
 
-                          
+
                           </div>
                         </div>
 
@@ -80,10 +80,10 @@
 
                     </div><!--well-->
                     </div><!-- /.col -->
-                    
+
 
                     <div class="col-md-4">
-                    
+
                       <table id="name" style="border-spacing: 0px;border-collapse: collapse;font-size: 12px; margin-top:53px">
                               <thead style="font-size:13px; background-color:#f0f5f5; text-align:center;">
                                 <tr>
@@ -98,10 +98,10 @@
                                   <div class="col-sm-4">
                                     <td> <input type="text" class="form-control" id = "txtLName1" placeholder="Last Name*" required></td>
                                     <td><input type="text" class="form-control" id = "txtFName1" placeholder="Given Name*" required></td>
-                                    <td><input type="text" class="form-control" id = "txtMName1" placeholder="Middle Name" required></td>
+                                    <td><input type="text" class="form-control" id = "txtMName1" placeholder="Middle Name"></td>
                                   </div>
                               </tr>
-                              
+
 
                               </tbody>
                         </table>
@@ -118,12 +118,12 @@
                           <li><a href="#tab_3" data-toggle="tab">Health Details</a></li>
                           <li><a href="#tab_4" data-toggle="tab">Education &amp; Literacy</a></li>
                           <li><a href="#tab_5" data-toggle="tab">Economic Details</a></li>
-                         
+
                         </ul>
 
-                      
+
                         <div class="tab-content" style="overflow: auto">
-                         
+
                           <div class="tab-pane active" id="tab_1">
                           <div id="dynamicInput3">
                             <table id="table1" style="border-spacing: 0px;border-collapse: collapse;font-size: 12px;">
@@ -135,7 +135,7 @@
                                   <th>Age</th>
                                   <th>Birth Place*</th>
                                   <th>Gender*</th>
-                                  
+
                                 </tr>
                               </thead>
 
@@ -152,7 +152,7 @@
                                   <td><input type=text class="form-control" id="txtBPlace1" required></td>
                                   <td style="width:100px;align:center"><input type="radio" name="btnGender1" value="Male" id="btnGender1" checked>Male
                                   	  <input type="radio" id="btnGender1" value="Female" name="btnGender1">Female</td>
-                                  
+
                                 </tr>
 
 
@@ -165,7 +165,7 @@
 
                           </div><!-- /.tab-pane -->
 
-                           
+
                           <div class="tab-pane" id="tab_2">
                           <div id="dynamicInput">
                             <table id="table2" style="border-spacing: 0px;border-collapse: collapse;font-size: 12px;" align="center">
@@ -208,13 +208,13 @@
                                 </tr>
 
                               </tbody>
-                          
+
                             </table>
 
-                            
+
 
                           </div><!-- /.tab-pane -->
-                          
+
 
                           </div>
                           <div class="tab-pane" id="tab_3">
@@ -226,12 +226,12 @@
                                   <th>Weight <br>(in kilograms)*</th>
                                   <th>Body Mass <br>Index</th>
                                   <th>Category</th>
-                                
+
                                 </tr>
 
                               </thead>
 
-                              
+
                               <tbody>
                                 <tr>
                                   <td><input type=text class="form-control" id="txtHeight1" value = 0 required></td>
@@ -241,7 +241,7 @@
                                 </tr>
 
                               </tbody>
-                        
+
                             </table>
                             </div>
                           </div><!-- /.tab-pane -->
@@ -251,7 +251,7 @@
                             <table id="table4" style="border-spacing: 0px;border-collapse: collapse;font-size: 12px;" align="center">
                               <thead style="font-size:13px; background-color:#f0f5f5">
                                 <tr>
-                                   
+
                                   <th>Currently Studying?</th>
                                   <th>(If yes) Current Educational Level</th>
                                   <th>(If no) Highest Educational Attainment</th>
@@ -263,7 +263,7 @@
 
                             <tbody>
                                 <tr>
-                               
+
                                   <td align="center"><select
                                         class="form-control"
                                         id="txtCurrentStud1"
@@ -320,10 +320,10 @@
                                       <input type="radio" id="btnWrite1" name="btnWrite1" value="No">No</td>
                                   </select></td>
 
-                                  
+
                                 </tr>
 
-                               
+
 
                               </tbody>
                             </table>
@@ -358,7 +358,7 @@
                                   </select></td>
                                 </tr>
 
-                              
+
 
                               </tbody>
                             </table>
@@ -371,25 +371,25 @@
                   </div><!-- /.box-body -->
 
                   <center><div class="box-footer">
-                    
+
 
                     <button type="button" id="btnAdd" class="btn btn-success btn-flat"><i class="fa fa-plus"></i> </button> &nbsp;&nbsp;&nbsp;&nbsp;
 
                     <button type="submit" class="btn btn-info btn-flat" id="btnSubmit">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;
 
                     <button type="button" id="btnRemove" class="btn btn-danger btn-flat"
-                    <?php 
+                    <?php
                     if (isset($_POST['trytry']) == '1')
-                      { echo 'disabled'; } 
+                      { echo 'disabled'; }
                     ?> > <i class="fa fa-remove"></i> </button>
 
                   </div></center>
                 </form>
               </div><!-- /.box -->
-                
+
               </div><!-- /.col -->
 
-             
+
 
           </div><!--row -->
 
@@ -449,20 +449,20 @@
                         @foreach($res as $resi)
                           <tr>
                           	  <td>
-                                  <button class="btn btn-xs btn-success btn-flat" 
-                                          data-toggle="modal" 
-                                          data-target="#edit" 
-                                          value = "{{$resi -> ResidentID}}"        
+                                  <button class="btn btn-xs btn-success btn-flat"
+                                          data-toggle="modal"
+                                          data-target="#edit"
+                                          value = "{{$resi -> ResidentID}}"
                                           onclick = "modalEdit(this)">
                                             <i class="fa fa-pencil"></i>
                                   </button>
-                                  <!-- <button class="btn btn-xs btn-danger btn-flat" 
-                                          data-toggle="modal" 
+                                  <!-- <button class="btn btn-xs btn-danger btn-flat"
+                                          data-toggle="modal"
                                           data-target="#delete"
                                           value = "{{$resi -> ResidentID}}"
                                           onclick = "modalDelete(this)">
                                             <i class="fa fa-remove"></i>
-                                  </button> --></td>		
+                                  </button> --></td>
                               <td>{{ $resi -> HouseID }}</td>
                               <td>{{ $resi -> FamilyID }}</td>
                               <td>{{ $resi -> ResidentID }}</td>
@@ -489,8 +489,8 @@
                               <td>{{ $resi -> CurrEmployed }}</td>
                               <td>{{ $resi -> Occupation }}</td>
                               <td>{{ $resi -> Salary }}</td>
-                                                       
-                            
+
+
                         </tr>
                         @endforeach
                       </tbody>
@@ -519,7 +519,7 @@
 
         $('#btnAdd').click(function(){
 
-          $('#name').append('<tr id="rowName' + (ctr) + '"> <div class="col-sm-4"> <td><input type="text" class="form-control" id = "txtLName' + (ctr) + '" placeholder="Last Name*" required></td> <td><input type="text" class="form-control" id = "txtFName' + (ctr) + '" placeholder="Given Name*" required></td> <td><input type="text" class="form-control" id = "txtMName' + (ctr) + '" placeholder="Middle Name*" required></td> </div> </tr>');
+          $('#name').append('<tr id="rowName' + (ctr) + '"> <div class="col-sm-4"> <td><input type="text" class="form-control" id = "txtLName' + (ctr) + '" placeholder="Last Name*" required></td> <td><input type="text" class="form-control" id = "txtFName' + (ctr) + '" placeholder="Given Name*" required></td> <td><input type="text" class="form-control" id = "txtMName' + (ctr) + '" placeholder="Middle Name"></td> </div> </tr>');
 
           $('#table2').append('<tr id="rowContact' + (ctr) + '"><td><select class="form-control" id="txtCivil' + (ctr) + '" required> <option>Single</option> <option>Married</option> <option>Divorced</option> <option>Widowed</option> <option>Separated</option> </select></td> <td><select class="form-control" id="txtReligion' + (ctr) + '" required> <option>Roman Catholic</option> <option>Born-again Christian</option> <option>Iglesia ni Cristo</option> <option>Orthodoxy</option> <option>Protestantism</option> <option>Mormon</option> <option>Islam</option> <option>Buddhism</option> <option>Judaism</option> <option>Hinduism</option> <option>Islam</option> <option>Others</option> </select></td> <td><input type=text class="form-control" id="txtMobile' + (ctr) + '"></td> <td><input type=text class="form-control" id="txtLine' + (ctr) + '"></td> <td><input type=email class="form-control" id="txtEmail' + (ctr) + '"></td> </tr>');
 
@@ -531,7 +531,7 @@
 
            $('#table5').append('<tr id="rowEcon' + (ctr) + '"> <td align="center"><select class="form-control" id="txtCurrentEmp' + (ctr) + '" onclick = "getEcon('+ctr+')" required> <option>Yes</option> <option>No</option> </select></td> <td><input type=text class="form-control" id="txtOccupation' + (ctr) + '"></td> <td><input type=text class="form-control"  id="txtSalary' + (ctr) + '"></td> </select></td> </tr>');
 
-          
+
             $('#trytry').val(ctr);
              ctr++;
 
@@ -559,7 +559,7 @@
 
     <script type="text/javascript">
                 $(document).ready(function(){
-                  
+
                  var tbl =$('#example2').DataTable({
                               "paging": true,
                               "lengthChange": false,
@@ -573,20 +573,21 @@
                             });
 
 
-                
+
 
 
                    $('#btnSubmit').click(function(e){
                     e.preventDefault();
 
-                    var x = parseInt(document.getElementById("trytry").value); 
+                    var x = parseInt(document.getElementById("trytry").value);
                     var houseid = $("#drop").val();
 
-                    $.ajax({
+										$.ajax({
                       type: 'POST',
                       url: 'addFamily',
                       data: {houseid:houseid},
                       success: function(data){
+
                       },
                       error: function(request, error){
                         console.log(arguments);
@@ -597,11 +598,8 @@
                       alert(ts.responseText);
                     });
 
-                  
+
                 for(var i = 1; i <= x; i++) {
-                
-
-
 
                     var lname = $('#txtLName'+i).val();
                     var fname = $('#txtFName'+i).val();
@@ -627,7 +625,7 @@
                     var currentemp = $('#txtCurrentEmp'+i).val();
                     var occup = $('#txtOccupation'+i).val();
                     var salary = $('#txtSalary'+i).val();
-                   
+
 
 
 
@@ -635,9 +633,9 @@
                     $.ajax({
                       type: 'POST',
                       url: 'addResident',
-                      data: { 
-                              houseid:$('#drop').val(),  
-                              lname: lname, 
+                      data: {
+                              houseid:$('#drop').val(),
+                              lname: lname,
                               fname: fname,
                               mname: mname,
                               relationhead: relationhead,
@@ -664,8 +662,8 @@
                             },
                       dataType: 'JSON',
                       success: function(data){
-                        alert('Records are successfully added!');
-                        tbl.clear().draw();
+
+												tbl.clear().draw();
 
                         $.each(data.res, function(key, val){
                           tbl.row.add([
@@ -697,7 +695,7 @@
                             val.WriteLiteracy,
                             val.CurrEmployed,
                             val.Occupation,
-                            val.Salary                           
+                            val.Salary
 
                             ]).draw(false);
 
@@ -727,9 +725,10 @@
                     $('#txtOccupation'+i).val("");
                     $('#txtSalary'+i).val("");
 
+										if(i == x)
+											alert('Records are successfully added!');
 
-
-               }//for
+               	}//for
                });
 
 
@@ -737,7 +736,7 @@
 
 
 
-              });//document
+						 });//document
         </script>
 
         <script type="text/javascript">
@@ -761,7 +760,7 @@
                            $('#tlast').val(val.HLastName);
                            $('#tfirst').val(val.HFirstName);
                            $('#tmiddle').val(val.HMidName);
-                           
+
                         });
 
 
@@ -797,8 +796,8 @@
                           var today = new Date();
                           var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
                         //Health
-                          var height = parseFloat(val.Height); 
-                          var weight = parseInt(val.Weight); 
+                          var height = parseFloat(val.Height);
+                          var weight = parseInt(val.Weight);
                           var c = (weight/(height*height));
                           var n = c.toFixed(2);
 
@@ -865,17 +864,17 @@
 <script type = text/javascript>
     function getHealth(x)
     {
-      
-       
+
+
         var i = parseInt(x);
-        var height = parseFloat(document.getElementById("txtHeight"+i).value); 
-        var weight = parseInt(document.getElementById("txtWeight"+i).value); 
+        var height = parseFloat(document.getElementById("txtHeight"+i).value);
+        var weight = parseInt(document.getElementById("txtWeight"+i).value);
 
         var c = (weight/(height*height));
         var n = c.toFixed(2);
         $('#txtBMI'+i).val(n);
 
-        
+
         if(n < 16){
             document.getElementById('txtHealthStat'+i).value = "Severely Underweight";}
         else if (n >= 16 && n < 18.5){
@@ -889,12 +888,12 @@
         else if (n == null){
             document.getElementById('txtHealthStat'+i).value = "Jom";}
 
-      
+
     }//Health
 
 
      function getEduc(x)
-    {   
+    {
 
         var i = parseInt(x);
 
@@ -922,7 +921,7 @@
     function getEcon(x)
     {
         var i = parseInt(x);
-        
+
         if(document.getElementById('txtCurrentEmp'+i).value == "Yes" )
         {
             document.getElementById('txtOccupation'+i).disabled = false;
@@ -939,7 +938,7 @@
 
     function getAge(x)
     {
-     
+
       var dob = $('#txtBday'+x).val();
       dob = new Date(dob);
       var today = new Date();
@@ -972,11 +971,11 @@
     function checkLastName(z) {
 
       var x = parseInt(document.getElementById("trytry").value);
-      var last = $('#txtLName1').val(); 
+      var last = $('#txtLName1').val();
 
 
       if (z.checked)
-        { 
+        {
             for(var i = 1; i <= x; i++) {
 
               $('#txtLName'+i).val(last);
