@@ -18,9 +18,9 @@
 			 	    <img src="{{ asset('assets/images/email.png')}}" alt="">
 			 	</div>
 			 	<div class="ftr-grid-right">
-			 		<p><a href="#">
+			 		<p>
             		{{ Session::get('brgyemail') }}
-			 		</a><span class="local">E-mail</span></p>
+			 		<span class="local">E-mail</span></p>
 			 	</div>
 			   <div class="clearfix"> </div>
 			 </div>
@@ -42,7 +42,7 @@
 <div class="copyright">
 	<div class="container">
 		<div class="copyright-main">
-			   <p>© 2016 All rights reserved | Coded with <i class="fa fa-heart"></i> and lots of <i class="fa fa-coffee"></i> by  <a href="#" target="_blank"> BSIT 4-2 #TEAMBarangay </a></p>
+			   <p>© 2016 All rights reserved | Coded with <i class="fa fa-heart"></i> and lots of <i class="fa fa-coffee"></i> by BSIT 4-2 #TEAMBarangay </p>
 			<div class="clearfix"> </div>
 		</div>
 	</div>

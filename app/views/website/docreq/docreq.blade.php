@@ -276,7 +276,7 @@
             }
             else
             {
-              alert('not a resident!!');
+              alert('Please fill in the details');
             }
           }
         }).error(function(ts){

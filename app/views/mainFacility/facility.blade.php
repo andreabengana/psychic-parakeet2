@@ -73,6 +73,7 @@
                         <div class="form-group">
                           <label>Rental Fee (for Residents)*</label>
                           <input type="number" 
+								 min="1"
                                  class="form-control" 
                                  id="txtResFee"
                                  name="txtResFee"
@@ -83,6 +84,7 @@
                         <div class="form-group">
                           <label>Rental Fee (for Non Residents)*</label>
                           <input type="number" 
+								 min="1"
                                  class="form-control" 
                                  id="txtNonResFee"
                                  name="txtNonResFee"
@@ -591,9 +593,35 @@
                     }
                   }).error(function(ts){
                     alert(ts.responseText);
-                  });
-
+                  });	
                 }
+				
+			$("#txtResFee").keypress(function (evt) {
+				evt.preventDefault();
+				});
+
+			$(document).keydown(function(e) {
+				var elid = $(document.activeElement).hasClass('textInput');
+				console.log(e.keyCode + ' && ' + elid);
+				//prevent both backspace and delete keys
+				if ((e.keyCode === 8 || e.keyCode === 46) && !elid) {
+				return false;
+				};
+			});	  
+			 
+			$("#txtNonResFee").keypress(function (evt) {
+				evt.preventDefault();
+				});
+
+			$(document).keydown(function(e) {
+				var elid = $(document.activeElement).hasClass('textInput');
+				console.log(e.keyCode + ' && ' + elid);
+				//prevent both backspace and delete keys
+				if ((e.keyCode === 8 || e.keyCode === 46) && !elid) {
+				return false;
+				};
+			 });
+			 
           </script>
 
               
