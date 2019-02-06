@@ -316,7 +316,7 @@
                 alert(" Can't do because: " + error);
               }
         }).error(function(ts){
-          alert(ts.responseText);
+          alert("Please fill in the details");
         });
       });
 
@@ -336,7 +336,7 @@
             
           }
         }).error(function(ts){
-          alert(ts.responseText);
+          alert("Please fill in the details");
         });
       });
     });

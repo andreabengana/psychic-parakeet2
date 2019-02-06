@@ -30,13 +30,14 @@
                         <div class="form-group">
                           <label for="exampleInputEmail1">Quantity*</label>
                           <input type="number" 
+								 min="1"
                                  class="form-control" 
                                  id="txtQuantity" 
                                  name="txtQuantity">
                         </div>
 
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Item Name*</label>
+                          <label for="exampleInputEmail1">Item Type*</label>
                           <select type="text" 
                                  class="form-control" 
                                  id="txtItemType" 
@@ -136,7 +137,7 @@
                           <td><h5 id = "s"></h5></td>
                         </tr>
                         <tr>
-                          <td><h5>ID/s Numbers: </h5></td>
+                          <td><h5>Item Number(s): </h5></td>
                           <td><h5 id = "i"></h5></td>
                         </tr>
 
@@ -533,7 +534,18 @@
                 });
               }
 
+			  $("#txtQuantity").keypress(function (evt) {
+				evt.preventDefault();
+				});
 
+			  $(document).keydown(function(e) {
+				var elid = $(document.activeElement).hasClass('textInput');
+				console.log(e.keyCode + ' && ' + elid);
+				//prevent both backspace and delete keys
+				if ((e.keyCode === 8 || e.keyCode === 46) && !elid) {
+				return false;
+				};
+			  });
 
               </script>
 

@@ -143,14 +143,18 @@
         
 
       <div class="row">
-        <div class="col-xs-4"></div>
         
-
         <div class="col-xs-4">
       
           <button type="submit" class="btn btn-primary btn-block btn-flat" id = "btn" name = "btn">Register</button>
 
         </div>
+		
+		<div class="col-xs-7">
+		
+			<button type="button" class="btn btn-primary btn-block btn-flat" id = "btn2" name = "btn2" onclick="gotoHomePage">Home</button>
+			
+		</div>
         <!-- /.col -->
       </div>
  
@@ -245,6 +249,12 @@
     });
     
   });
+</script>
+
+<script type="text/javascript">
+    document.getElementById("btn2").onclick = function () {
+        window.location.href="{{URL::to('index')}}";
+    };
 </script>
 
 
