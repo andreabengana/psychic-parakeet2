@@ -267,6 +267,9 @@
     $("#ResCheckAll").click(function(){
         $("input[name='Status']").not(this).prop('checked', this.checked);
     });
+	$("input[name='Status']").click(function(){
+			$("#ResCheckAll").prop("checked", false);
+	});
 
     $("#AllAge").click(function(){
 
@@ -286,17 +289,28 @@
 
     $("#ResGenderAll").click(function(){
         $("input[name='Gender']").not(this).prop('checked', this.checked);
-    });
+	});
+	$("input[name='Gender']").click(function(){
+			$("#ResGenderAll").prop("checked", false);
+			
+	});
+
 
     $("#ResCivilAll").click(function(){
         $("input[name='CivilStatus']").not(this).prop('checked', this.checked);
     });
+	$("input[name='CivilStatus']").click(function(){
+			$("#ResCivilAll").prop("checked", false);
+	});
 
 
 //HEALTH DETAILS
     $("#HealthCate").click(function(){
         $("input[name='HealthCat']").not(this).prop('checked', this.checked);
     });
+	$("input[name='HealthCat']").click(function(){
+			$("#HealthCate").prop("checked", false);
+	});
 
     $("#AllH").click(function(){
 
@@ -342,6 +356,10 @@
     $("#CurrentEdu").click(function(){
         $("input[name='CurEdu']").not(this).prop('checked', this.checked);
     });
+	$("input[name='CurEdu']").click(function(){
+			$("#CurrentEdu").prop("checked", false);
+	});
+	
 
     $('#CurrentlyStudying').change(function(){
       if ($('#CurrentlyStudying').val()=='No')
@@ -365,10 +383,16 @@
     $("#ReadLit").click(function(){
         $("input[name='read']").not(this).prop('checked', this.checked);
     });
+	$("input[name='read']").click(function(){
+			$("#ReadLit").prop("checked", false);
+	});
 
     $("#WriteLit").click(function(){
         $("input[name='write']").not(this).prop('checked', this.checked);
     });
+	$("input[name='write']").click(function(){
+			$("#WriteLit").prop("checked", false);
+	});
 
 
 //ECONOMIC DETAILS

@@ -80,17 +80,41 @@
 
 //*******************************Household**********************************************************************//
 
+      
+
       $("#HouseStreet").click(function(){
-            $("input[name='street']").not(this).prop('checked', this.checked);
+            //$("input[name='street']").not(this).prop('checked', this.checked); 
+			//$("input[id='HouseType']:checked").prop('checked', false);
+			//if ($('input[name=street]:checked').not(this).prop('checked')==false)
+			//{
+			//		$("input[id='HouseStreet']").prop("checked", false);
+			//}
+			//else
+			//{
+			//		$("input[id='HouseStreet']").prop("checked", true);
+			//}
+			$("input[name='street']").not(this).prop("checked", this.checked);
           });
+	  $("input[name='street']").click(function(){
+			$("#HouseStreet").prop("checked", false);
+			
+	  });
 
       $("#HouseType").click(function(){
             $("input[name='Htype']").not(this).prop('checked', this.checked);
           });
 
+	  $("input[name='Htype']").click(function(){
+		    $("#HouseType").prop("checked", false);
+	  });
+
       $("#HouseStatus").click(function(){
             $("input[name='Hstatus']").not(this).prop('checked', this.checked);
           });
+
+	  $("input[name='Hstatus']").click(function(){
+		    $("#HouseStatus").prop("checked", false);
+	  });
 
       $('#btnHouse').click(function()
       {
@@ -99,8 +123,8 @@
         var HouseStatus= [];
 
             $.each($("input[name='street']:checked"), function()
-            {            
-                HouseSt.push($(this).val()); 
+            { 
+				HouseSt.push($(this).val()); 
             });
 
             $.each($("input[name='Htype']:checked"), function()
@@ -154,4 +178,7 @@
                     });  
 
       });
+	
+
+	
 </script>

@@ -70,9 +70,15 @@
   $("#checkAllFac").click(function(){
     $("input[name='FacName']").not(this).prop('checked', this.checked);
   });
+  $("input[name='FacName']").click(function(){
+	$("#checkAllFac").prop("checked", false);
+  });
 
   $("#FacCheckAllStatus").click(function(){
     $("input[name='FacStatus']").not(this).prop('checked', this.checked);
+  });
+  $("input[name='FacStatus']").click(function(){
+	$("#FacCheckAllStatus").prop("checked", false);
   });
 
 
