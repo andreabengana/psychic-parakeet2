@@ -586,149 +586,148 @@
                       type: 'POST',
                       url: 'addFamily',
                       data: {houseid:houseid},
+											error: function(request, error){
+												console.log(arguments);
+												alert("cant do this because: " + error);
+											},
                       success: function(data){
 
-                      },
-                      error: function(request, error){
-                        console.log(arguments);
-                        alert("cant do this because: " + error);
                       }
+
 
                     }).error(function(ts){
                       alert(ts.responseText);
                     });
 
-
-                for(var i = 1; i <= x; i++) {
-
-                    var lname = $('#txtLName'+i).val();
-                    var fname = $('#txtFName'+i).val();
-                    var mname = $('#txtMName'+i).val();
-                    var relationhead = $('#txtRelation'+i).val();
-                    var restype = $('#txtResidency'+i).val();
-                    var bdate = $('#txtBday'+i).val();
-                    var bplace = $('#txtBPlace'+i).val();
-                    var gender = $("input[name='btnGender" + i +"']:checked").val();
-                    var civil = $('#txtCivil'+i).val();
-                    var religion = $('#txtReligion'+i).val();
-                    var mobileno = $('#txtMobile'+i).val();
-                    var telno = $('#txtLine'+i).val();
-                    var email = $('#txtEmail'+i).val();
-                    var height = $('#txtHeight'+i).val();
-                    var weight = $('#txtWeight'+i).val();
-                    var healthstat = $('#txtHealthStat'+i).val();
-                    var currentstud = $('#txtCurrentStud'+i).val();
-                    var currentlevel = $('#txtRecentEd'+i).val();
-                    var highestlevel = $('#txtHighestEd'+i).val();
-                    var read = $("input[name='btnRead" + i +"']:checked").val();
-                    var write = $("input[name='btnWrite" + i +"']:checked").val();
-                    var currentemp = $('#txtCurrentEmp'+i).val();
-                    var occup = $('#txtOccupation'+i).val();
-                    var salary = $('#txtSalary'+i).val();
-
-
+										for(var i = 1; i <= x; i++) {
+											if(i == x)
+												alert('Records are successfully added!');
+												var lname = $('#txtLName'+i).val();
+												var fname = $('#txtFName'+i).val();
+												var mname = $('#txtMName'+i).val();
+												var relationhead = $('#txtRelation'+i).val();
+												var restype = $('#txtResidency'+i).val();
+												var bdate = $('#txtBday'+i).val();
+												var bplace = $('#txtBPlace'+i).val();
+												var gender = $("input[name='btnGender" + i +"']:checked").val();
+												var civil = $('#txtCivil'+i).val();
+												var religion = $('#txtReligion'+i).val();
+												var mobileno = $('#txtMobile'+i).val();
+												var telno = $('#txtLine'+i).val();
+												var email = $('#txtEmail'+i).val();
+												var height = $('#txtHeight'+i).val();
+												var weight = $('#txtWeight'+i).val();
+												var healthstat = $('#txtHealthStat'+i).val();
+												var currentstud = $('#txtCurrentStud'+i).val();
+												var currentlevel = $('#txtRecentEd'+i).val();
+												var highestlevel = $('#txtHighestEd'+i).val();
+												var read = $("input[name='btnRead" + i +"']:checked").val();
+												var write = $("input[name='btnWrite" + i +"']:checked").val();
+												var currentemp = $('#txtCurrentEmp'+i).val();
+												var occup = $('#txtOccupation'+i).val();
+												var salary = $('#txtSalary'+i).val();
 
 
+												$.ajax({
+													type: 'POST',
+													url: 'addResident',
+													data: {
+																	houseid:$('#drop').val(),
+																	lname: lname,
+																	fname: fname,
+																	mname: mname,
+																	relationhead: relationhead,
+																	restype: restype,
+																	bdate: bdate,
+																	bplace: bplace,
+																	gender: gender,
+																	civil: civil,
+																	religion: religion,
+																	mobileno: mobileno,
+																	telno: telno,
+																	email: email,
+																	height: height,
+																	weight: weight,
+																	healthstat: healthstat,
+																	currentstud: currentstud,
+																	currentlevel: currentlevel,
+																	highestlevel: highestlevel,
+																	read: read,
+																	write: write,
+																	currentemp: currentemp,
+																	occup: occup,
+																	salary: salary
+																},
+													dataType: 'JSON',
 
-                    $.ajax({
-                      type: 'POST',
-                      url: 'addResident',
-                      data: {
-                              houseid:$('#drop').val(),
-                              lname: lname,
-                              fname: fname,
-                              mname: mname,
-                              relationhead: relationhead,
-                              restype: restype,
-                              bdate: bdate,
-                              bplace: bplace,
-                              gender: gender,
-                              civil: civil,
-                              religion: religion,
-                              mobileno: mobileno,
-                              telno: telno,
-                              email: email,
-                              height: height,
-                              weight: weight,
-                              healthstat: healthstat,
-                              currentstud: currentstud,
-                              currentlevel: currentlevel,
-                              highestlevel: highestlevel,
-                              read: read,
-                              write: write,
-                              currentemp: currentemp,
-                              occup: occup,
-                              salary: salary
-                            },
-                      dataType: 'JSON',
-                      success: function(data){
+													success: function(data){
 
-												tbl.clear().draw();
+														tbl.clear().draw();
 
-                        $.each(data.res, function(key, val){
-                          tbl.row.add([
+														$.each(data.res, function(key, val){
+															tbl.row.add([
 
-                            '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" value = "'+val.ResidentID+'" onclick = "modalEdit(this)"> <i class="fa fa-pencil"></i> </button> ',
-                            /*'<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" value = "'+val.ResidentID+'" onclick = "modalDelete(this)"><i class="fa fa-remove"></i></button>'*/
-                            val.HouseID,
-                            val.FamilyID,
-                            val.ResidentID,
-                            val.LastName+", " + val.FirstName +" "+ val.MidName,
-                            val.HouseAddNo+" " + val.HouseStreet +"St. Zone "+ val.HouseZone,
-                            val.RelationHead,
-                            val.ResidencyStat,
-                            val.Birthdate,
-                            val.Birthplace,
-                            val.Gender,
-                            val.CivilStat,
-                            val.Religion,
-                            val.MobileNo,
-                            val.TelNo,
-                            val.EmailAdd,
-                            val.Height,
-                            val.Weight,
-                            val.HealthStat,
-                            val.CurrStudy,
-                            val.CurrLevel,
-                            val.HighLevel,
-                            val.ReadLiteracy,
-                            val.WriteLiteracy,
-                            val.CurrEmployed,
-                            val.Occupation,
-                            val.Salary
+																'<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" value = "'+val.ResidentID+'" onclick = "modalEdit(this)"> <i class="fa fa-pencil"></i> </button> ',
+																/*'<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" value = "'+val.ResidentID+'" onclick = "modalDelete(this)"><i class="fa fa-remove"></i></button>'*/
+																val.HouseID,
+																val.FamilyID,
+																val.ResidentID,
+																val.LastName+", " + val.FirstName +" "+ val.MidName,
+																val.HouseAddNo+" " + val.HouseStreet +"St. Zone "+ val.HouseZone,
+																val.RelationHead,
+																val.ResidencyStat,
+																val.Birthdate,
+																val.Birthplace,
+																val.Gender,
+																val.CivilStat,
+																val.Religion,
+																val.MobileNo,
+																val.TelNo,
+																val.EmailAdd,
+																val.Height,
+																val.Weight,
+																val.HealthStat,
+																val.CurrStudy,
+																val.CurrLevel,
+																val.HighLevel,
+																val.ReadLiteracy,
+																val.WriteLiteracy,
+																val.CurrEmployed,
+																val.Occupation,
+																val.Salary
 
-                            ]).draw(false);
+																]).draw(false);
 
-                        });
-                      },
-                      error: function(request, error){
-                        console.log(arguments);
-                        alert(error);
-                      }//error
+														});
+													},
+													error: function(request, error){
+														console.log(arguments);
+														alert(error);
+													}//error
 
-                    }).error(function(ts){
-                      alert(ts.responseText);
-                    });//error
+												}).error(function(ts){
+													alert(ts.responseText);
+												});//error
 
 
 
-                    $('#txtLName'+i).val("");
-                    $('#txtFName'+i).val("");
-                    $('#txtMName'+i).val("");
-                    $('#txtBday'+i).val("");
-                    $('#txtBPlace'+i).val("");
-                    $('#txtMobile'+i).val("");
-                    $('#txtLine'+i).val("");
-                    $('#txtEmail'+i).val("");
-                    $('#txtHeight'+i).val("");
-                    $('#txtWeight'+i).val("");
-                    $('#txtOccupation'+i).val("");
-                    $('#txtSalary'+i).val("");
+												$('#txtLName'+i).val("");
+												$('#txtFName'+i).val("");
+												$('#txtMName'+i).val("");
+												$('#txtBday'+i).val("");
+												$('#txtBPlace'+i).val("");
+												$('#txtMobile'+i).val("");
+												$('#txtLine'+i).val("");
+												$('#txtEmail'+i).val("");
+												$('#txtHeight'+i).val("");
+												$('#txtWeight'+i).val("");
+												$('#txtOccupation'+i).val("");
+												$('#txtSalary'+i).val("");
 
-										if(i == x)
-											alert('Records are successfully added!');
 
-               	}//for
+
+										}//for
+
                });
 
 
