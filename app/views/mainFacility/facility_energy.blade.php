@@ -381,8 +381,23 @@
 
    //add devices
    $('#btnAddDevice').click(function(){
-
-                
+			var isEmpty= true;
+			var consDev, desc, pricephr, quant;
+			
+			consDev = $('#txtDevice').val();
+			desc = $('#txtDeviceDescription').val();
+			pricephr = $('#txtDevicePrice').val();
+			quant = $('#txtDeviceQuantity').val();
+			
+			if(consDev == '' || desc == '' || pricephr == '' || quant == ''){
+				isEmpty = true;
+				alert('Please Fill Up All Details!');
+			}
+			else{
+				isEmpty = false;
+			}
+			
+            if(!isEmpty){ 
 
               $.ajax({
                 type:'POST',
@@ -419,7 +434,7 @@
               }).error(function(ts){
                 alert(ts.responseText);
               });
-
+			}
               });
 
 

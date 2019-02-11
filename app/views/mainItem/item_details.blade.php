@@ -57,7 +57,6 @@
                                         class="btn btn-primary btn-flat"
                                         id="btnSubmit"
                                         data-toggle="modal"
-                                        data-target="#addedItems"
                                         >Submit</button></center>
                       </div>
                     </form>
@@ -313,10 +312,22 @@
                   $('#btnSubmit').click(function(){
                     $('#Messages').html('');
                     
-
-                    var quan = $('#txtQuantity').val();
-                    var iType = $('#txtItemType').val();
-
+					var isEmpty= true;
+					var quant, itmType;
+					
+                    quant = $('#txtQuantity').val();
+                    itmType = $('#txtItemType').val();
+					
+					if(quant == '' || itmType == ''){
+						isEmpty = true;
+						alert('Please Fill Up All Details!');
+					}
+					else{
+						isEmpty = false;
+					}
+					
+					if(!isEmpty){ 
+					$('#addedItems').modal('show');
                     $.ajax({
                       type: 'POST',
                       url: 'addItemDetails',
@@ -351,7 +362,7 @@
                             $('#i').html(data.it[0].ItemCode + " - " + (data.te[0].ItemID+1) + "   to   " + data.it[0].ItemCode + " - " + (parseInt(quan) + parseInt(data.te[0].ItemID)));
                           }
                         }
-
+				
 
 
                         tbl.clear().draw();
@@ -383,7 +394,8 @@
                       }
                                           
                       }
-                    });                          
+                    });
+					}
                     $('#txtQuantity').val("");
                     $('#txtItemType').val("");
 

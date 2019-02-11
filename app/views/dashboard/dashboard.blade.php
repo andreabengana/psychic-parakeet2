@@ -217,6 +217,8 @@
 
           </div>
           <!-- /.box -->
+		  
+		  
         </div>
       
     
@@ -241,8 +243,53 @@
 
       </div>
 
+<div class="col-md-5">
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Population Breakdown by <b>Age</b></h3>
 
-      <div class="col-md-5">
+            
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="chart-responsive">
+                    <canvas id="AgepieChart" height="150" ></canvas>
+                  </div>
+                  <!-- ./chart-responsive -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-3">
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-red"></i> 0-10</li>
+                    <li><i class="fa fa-circle-o text-green"></i> 11-20</li>
+					<li><i class="fa fa-circle-o text-yellow"></i> 21-30</li>
+					<li><i class="fa fa-circle-o text-orange"></i> 31-40</li>
+					<li><i class="fa fa-circle-o text-blue"></i> 41-50</li>
+					<li><i class="fa fa-circle-o text-black"></i> 51-60</li>
+					<li><i class="fa fa-circle-o text-maroon"></i> 61-70</li>
+					<li><i class="fa fa-circle-o text-lime"></i> 71-80</li>
+					<li><i class="fa fa-circle-o text-gray"></i> 81-90</li>
+					<li><i class="fa fa-circle-o text-aqua"></i> 91-100</li>
+                  </ul>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <a href="<?php echo 'residentDetails' ?>#viewRes" class="btn btn-flat btn-sm btn-default pull-right">View all <i class="fa fa-arrow-circle-right"></i> </a>
+            </div>
+            <!-- /.footer -->
+
+
+
+          </div>
+          <!-- /.box -->
+	  
+      <div class="col-md-15">
           <div class="box box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Recent Activities</h3>

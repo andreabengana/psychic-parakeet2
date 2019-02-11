@@ -402,7 +402,20 @@
 
                         ]).draw(false);
                     });
-                     
+                     if (data.messages != null) {
+                 
+
+                        $('#Messages').append('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-ban"></i> Warning!</h4><b></b></div>');  
+                              $('#Messages').fadeIn().delay(5000).fadeOut();
+                        $.each(data.messages, function(key, val){
+                            $('#Messages div b').append(val + '<br>');
+                        });
+                      }
+                       
+                      else {
+                        $('#SuccessBox').html('<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Success!</h4>Record has been successfully added</div>');
+                          $('#SuccessBox').fadeIn().delay(1000).fadeOut();  
+                      }
 
                   },
                   error: function(request, error){
