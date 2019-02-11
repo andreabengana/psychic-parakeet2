@@ -89,6 +89,21 @@ class DashboardController extends BaseController {
 		}
 	}
 
+	public function countAgeResInfo(){
+		if(Request::ajax()){
+			$male = DB::table('tblresident')
+				->where('Gender', '=', 'Male')
+				->where('status', '=', 'active')
+				->count();
+
+			$female = DB::table('tblresident')
+				->where('status', '=', 'active')
+				->where('Gender', '=', 'Female')
+				->count();
+			return Response::json(array('male' => $male, 'female' => $female ));
+		}
+	}
+	
 	public function countResStreetInfo(){
 
 		if(Request::ajax()){
