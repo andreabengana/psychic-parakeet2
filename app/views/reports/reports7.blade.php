@@ -153,7 +153,9 @@ var endDate;
                 'This Month': [moment().startOf('month'), moment().endOf('month')],
                 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
               },
-              startDate: moment().subtract(29, 'days'),
+              //startDate: moment().subtract(29, 'days'),
+              //endDate: moment(),
+			  startDate: moment().add(1, 'days'),
               endDate: moment(),
 
 
@@ -179,10 +181,28 @@ var endDate;
       });
 
     $('#btnViewFaci').click(function(){
+	  var sstartDate=  $("#btnFacility").data('daterangepicker').startDate.format('MM-DD-YYYY');
+	  var eendDate=  $("#btnFacility").data('daterangepicker').endDate.format('MM-DD-YYYY');
+	  //alert(sstartDate);
+	  //alert(eendDate);
 
+	var tomorrow = new Date();
+	var dd = tomorrow.getDate() + 1;
+	var mm = tomorrow.getMonth() + 1; //January is 0!
+	var yyyy = tomorrow.getFullYear();
+
+	if (dd < 10) {
+	  dd = '0' + dd;
+	}
+
+	if (mm < 10) {
+	  mm = '0' + mm;
+	}
+
+	tomorrow = mm + '-' + dd + '-' + yyyy;
 
       var dates2 = $('#hiddenFacility').html().split(" / ");
- alert(dates2);
+		//alert(dates2);
               var dateFrom = dates2[0];
               var dateTo = dates2[1];
       $.ajax({
@@ -194,17 +214,27 @@ var endDate;
         },
         dataType: 'JSON',
         success: function(data){
-          alert(JSON.stringify(data.totalPerDoc));
-          $('.modal-title').html($('#btnFacility span').html());
+          //alert(JSON.stringify(data.totalPerDoc));
+          if(sstartDate==tomorrow)
+			{
+				$('.modal-title').html("No Date Selected");
+				$('.daterep').html("No Date Selected");
+				//alert("parehas");
+			}
+			else
+			{
+			  $('.modal-title').html($('#btnFacility span').html());
           
-          $('.daterep').html($('.modal-title').html());
+			  $('.daterep').html($('.modal-title').html());
+			}
 
           $('#report7Table').html('');
           $('#report7Breakdown').html('');
 
 
           $('#report7Table').append('<thead><th style="width:150px">ReservationIDs</th><th style="width:150px">FacilityName</th><th style="width:150px">Date Issue</th></thead>');
-                $('#report7Table').append('<tbody></tbody>');
+                $('#report7TableBreakdown').append('<thead><th style="width:150px">Documents</th><th style="width:150px">No. of Requests</th></thead>');
+				$('#report7Table').append('<tbody></tbody>');
                 $('#report7Breakdown').append('<tbody></tbody>');
 
           // $.each(data.doc, function(key,val){

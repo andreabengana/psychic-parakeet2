@@ -199,7 +199,9 @@ var endDate;
                 'This Month': [moment().startOf('month'), moment().endOf('month')],
                 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
               },
-              startDate: moment().subtract(29, 'days'),
+              //startDate: moment().subtract(29, 'days'),
+              //endDate: moment(),
+			  startDate: moment().add(1, 'days'),
               endDate: moment(),
 
 
@@ -223,6 +225,27 @@ var endDate;
       });
 
     $('#btnViewResPayment').click(function(){
+	  var sstartDate=  $("#btnResPayment").data('daterangepicker').startDate.format('MM-DD-YYYY');
+	  var eendDate=  $("#btnResPayment").data('daterangepicker').endDate.format('MM-DD-YYYY');
+	  //alert(sstartDate);
+	  //alert(eendDate);
+
+	var tomorrow = new Date();
+	var dd = tomorrow.getDate() + 1;
+	var mm = tomorrow.getMonth() + 1; //January is 0!
+	var yyyy = tomorrow.getFullYear();
+
+	if (dd < 10) {
+	  dd = '0' + dd;
+	}
+
+	if (mm < 10) {
+	  mm = '0' + mm;
+	}
+
+	tomorrow = mm + '-' + dd + '-' + yyyy;
+	//alert(tomorrow);
+
 
       var dates2 = $('#hiddenResPayment').html().split(" / ");
 
@@ -239,14 +262,24 @@ var endDate;
         success: function(data){
 
           //alert(JSON.stringify(data));
-           $('.modal-title').html($('#btnResPayment span').html());
+          if(sstartDate==tomorrow)
+			{
+				$('.modal-title').html("No Date Selected");
+				$('.daterep').html("No Date Selected");
+				//alert("parehas");
+			}
+			else
+			{
+			  $('.modal-title').html($('#btnResPayment span').html());
           
-          $('.daterep').html($('.modal-title').html());
+			  $('.daterep').html($('.modal-title').html());
+			}
 
           $('#report5Table').html('');
           $('#report5TableBreakdown').html('');
            $('#report5Table').append('<thead><th style="width:150px">PaymentID</th><th style="width:150px">PaymentDate</th><th style="width:150px">Paid Amount</th></thead>');
-                $('#report5Table').append('<tbody></tbody>');
+                $('#report5TableBreakdown').append('<thead><th style="width:150px">Documents</th><th style="width:150px">No. of Requests</th></thead>');
+				$('#report5Table').append('<tbody></tbody>');
                 $('#report5TableBreakdown').append('<tbody></tbody>');
 
             $.each(data.datas, function(key1, val1){
