@@ -125,12 +125,13 @@
                                         data-target = "#viewImage"
                                         onclick = "modalEdit({{ $temp -> TemplateID }})"> <i class="fa fa-eye"></i></button>
 
-                                  <button class="btn btn-xs btn-success btn-flat" 
+                                  <!--<button class="btn btn-xs btn-success btn-flat" 
                                         data-toggle="modal" 
                                         data-target="#edit"
                                         onclick = "modalEdit({{ $temp -> TemplateID }})">
+											
                                           <i class="fa fa-pencil"></i>
-                                </button>
+                                </button>-->
 
                                 <button class="btn btn-xs btn-danger btn-flat"
                                         data-toggle="modal" 
@@ -369,6 +370,7 @@
 
                 function modalEdit(x)
                 {
+					
                   $.ajax({
                     type: 'POST',
                     url: 'getTemplateInfo',
@@ -381,8 +383,8 @@
                         $('#etxtTemplateSize').val(val.TemplateSize);
                         $('#etxtTemplateOrient').val(val.TemplateOrientation);
                         $('#etxtTemplateImage').attr('src', "{{ asset ('bower_components/admin-lte/dist/images/" + val.Template + "')}}");
-                        
 
+                        
                         $('#vImage').attr('src', "{{ asset ('bower_components/admin-lte/dist/images/" + val.Template + "')}}");
                       });
                     }
@@ -433,7 +435,7 @@
                             val.TemplateSize,
                             val.TemplateOrientation,
                             '<button type = "button" class = "btn btn-xs btn-info btn-xs" data-toggle = "modal" data-target = "#viewImage" onclick = "modalEdit('+ val.TemplateID +')"><i class="fa fa-eye"></i></button>' +
-                            '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick = "modalEdit('+ val.TemplateID +')"><i class="fa fa-pencil"></i></button> ' +
+                            //'<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick = "modalEdit('+ val.TemplateID +')"><i class="fa fa-pencil"></i></button> ' +
                                 '<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" onclick = "modalDelete('+ val.TemplateID +')"> <i class="fa fa-remove"></i></button>'
 
                             
@@ -473,7 +475,7 @@
                             val.TemplateSize,
                             val.TemplateOrientation,
                             '<button type = "button" class = "btn btn-xs btn-info btn-xs" data-toggle = "modal" data-target = "#viewImage" onclick = "modalEdit('+ val.TemplateID +')"><i class="fa fa-eye"></i></button>' +
-                            '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick = "modalEdit('+ val.TemplateID +')"><i class="fa fa-pencil"></i></button> ' +
+                            //'<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick = "modalEdit('+ val.TemplateID +')"><i class="fa fa-pencil"></i></button> ' +
                                 '<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" onclick = "modalDelete('+ val.TemplateID +')"> <i class="fa fa-remove"></i></button>'
                             
                           ]).draw(false);
@@ -509,7 +511,7 @@
                             val.TemplateSize,
                             val.TemplateOrientation,
                             '<button type = "button" class = "btn btn-xs btn-info btn-xs" data-toggle = "modal" data-target = "#viewImage" onclick = "modalEdit('+ val.TemplateID +')"><i class="fa fa-eye"></i></button>' +
-                            '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick = "modalEdit('+ val.TemplateID +')"><i class="fa fa-pencil"></i></button> ' +
+                            //'<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick = "modalEdit('+ val.TemplateID +')"><i class="fa fa-pencil"></i></button> ' +
                                 '<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" onclick = "modalDelete('+ val.TemplateID +')"> <i class="fa fa-remove"></i></button>'
 
                             
@@ -528,7 +530,7 @@
                   });
 
 
-
+				
 
 
 
