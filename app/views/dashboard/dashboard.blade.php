@@ -351,6 +351,40 @@
                 //- PIE CHART -
                 //-------------
                 // Get context with jQuery - using jQuery's .get() method.
+				var one = 0, two = 0, three = 0, four = 0, five = 0, six = 0, seven = 0, eight = 0, nine = 0, ten = 0;
+				$.each(data.date, function(key, val){
+                   var today = new Date();
+                   var birthDate = new Date(val.Birthdate);
+                  
+                   var age = today.getFullYear()  - birthDate.getFullYear();
+                   var m = today.getMonth() - birthDate.getMonth();
+                      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+                      {
+                        age--;
+                      }
+					  if (age <= 10){
+						one++;
+					  }else if (age >= 11 && age <=20){
+						two++;
+					  }else if (age >= 21 && age <=30){
+						three++;
+					  }else if (age >= 31 && age <=40){
+						four++;
+					  }else if (age >= 41 && age <=50){
+						five++;
+					  }else if (age >= 51 && age <=60){
+						six++;
+					  }else if (age >= 61 && age <=70){
+						seven++;
+					  }else if (age >= 71 && age <=80){
+						eight++;
+					  }else if (age >= 81 && age <=90){
+						nine++;
+					  }else if (age >= 91 && age <=100){
+						ten++;
+					  }
+                 });
+				
                 var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
                 var pieChart = new Chart(pieChartCanvas);
                 var PieData = [
@@ -367,6 +401,72 @@
                     label: "Male"
                   },
                 ];
+				
+				var AgepieChartCanvas = $("#AgepieChart").get(0).getContext("2d");
+                var AgepieChart = new Chart(AgepieChartCanvas);
+                var AgePieData = [
+                  {
+                    value: one,
+                    color: "#f56954",
+                    highlight: "#f56954",
+                    label: "0-10"
+                  },
+                  {
+                    value: two,
+                    color: "#00a65a",
+                    highlight: "#00a65a",
+                    label: "11-20"
+                  },
+				  {
+                    value: three,
+                    color: "#FFFF00",
+                    highlight: "#FFFF00",
+                    label: "21-30"
+                  },
+                  {
+                    value: four,
+                    color: "#FFA500",
+                    highlight: "#FFA500",
+                    label: "31-40"
+                  },
+				  {
+                    value: five,
+                    color: "#0000FF",
+                    highlight: "#0000FF",
+                    label: "41-50"
+                  },
+                  {
+                    value: six,
+                    color: "#000000",
+                    highlight: "#000000",
+                    label: "51-60"
+                  },
+				  {
+                    value: seven,
+                    color: "#800000",
+                    highlight: "#800000",
+                    label: "61-70"
+                  },
+                  {
+                    value: eight,
+                    color: "#00FF00",
+                    highlight: "#00FF00",
+                    label: "71-80"
+                  },
+				  {
+                    value: nine,
+                    color: "#808080",
+                    highlight: "#808080",
+                    label: "81-90"
+                  },
+                  {
+                    value: ten,
+                    color: "#00FFFF",
+                    highlight: "#00FFFF",
+                    label: "91-100"
+                  },
+                ];
+				
                 var pieOptions = {
                   //Boolean - Whether we should show a stroke on each segment
                   segmentShowStroke: true,
@@ -394,9 +494,37 @@
                 //Create pie or douhnut chart
                 // You can switch between pie and douhnut using the method below.
                 pieChart.Doughnut(PieData, pieOptions);
+				
+				var AgepieOptions = {
+                  //Boolean - Whether we should show a stroke on each segment
+                  segmentShowStroke: true,
+                  //String - The colour of each segment stroke
+                  segmentStrokeColor: "#fff",
+                  //Number - The width of each segment stroke
+                  segmentStrokeWidth: 2,
+                  //Number - The percentage of the chart that we cut out of the middle
+                  percentageInnerCutout: 0, // This is 0 for Pie charts
+                  //Number - Amount of animation steps
+                  animationSteps: 100,
+                  //String - Animation easing effect
+                  animationEasing: "easeOutBounce",
+                  //Boolean - Whether we animate the rotation of the Doughnut
+                  animateRotate: true,
+                  //Boolean - Whether we animate scaling the Doughnut from the centre
+                  animateScale: true,
+                  //Boolean - whether to make the chart responsive to window resizing
+                  responsive: true,
+                  // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+                  maintainAspectRatio: true,
+                  //String - A legend template
+                  legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+                };
+				AgepieChart.Pie(AgePieData, AgepieOptions);
                         
           }
-      });              
+      });
+	  
+
    
       
   $.ajax({
