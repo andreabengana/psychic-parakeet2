@@ -4,13 +4,13 @@
       <!-- Content Header (Page header) -->
           <section class="content-header">
             <h1>
-              Maintenance <small>Item Details</small>
-              
+              Maintenance <small>Item Name</small>
+
             </h1>
             <ol class="breadcrumb">
               <li><a href="<?php echo 'maintenanceMenu' ?>"><i class="fa fa-dashboard"></i> Maintenance</a></li>
               <li><a href="#">Item</a></li>
-              <li class="active">Item Details</li>
+              <li class="active">Item Name</li>
             </ol>
           </section>
 
@@ -21,7 +21,7 @@
                 <!-- general form elements -->
                   <div class="box box-primary">
                     <div class="box-header with-border">
-                      <h3 class="box-title">Item Details</h3>
+                      <h3 class="box-title">Item Name</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" onsubmit="return false" action = "{{URL::to('addItemType')}}" enctype="multipart/form-data" id = "addForm">
@@ -32,61 +32,61 @@
 
                         <div class="form-group">
                           <label for="exampleInputEmail1">Item Name*</label>
-                          <input type="text" 
-                                 class="form-control" 
-                                 id="txtIName" 
-                                 name="txtIName" 
+                          <input type="text"
+                                 class="form-control"
+                                 id="txtIName"
+                                 name="txtIName"
                                  placeholder="Name"
                                  required="required">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Item Code*</label>
-                          <input type="text" 
-                                 class="form-control" 
-                                 id="txtICode" 
-                                 name="txtICode" 
+                          <input type="text"
+                                 class="form-control"
+                                 id="txtICode"
+                                 name="txtICode"
                                  placeholder="Code"
                                  required="required">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Rental Fee (Residents)*</label>
-                          <input type="number" 
-                                 class="form-control" 
-                                 id="txtIRFee" 
-                                 name="txtIRFee" 
+                          <input type="number"
+                                 class="form-control"
+                                 id="txtIRFee"
+                                 name="txtIRFee"
                                  placeholder="Fee"
                                  required="required">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Rental Fee (Non-Residents)*</label>
-                          <input type="number" 
-                                 class="form-control" 
-                                 id="txtINRFee" 
-                                 name="txtINRFee" 
+                          <input type="number"
+                                 class="form-control"
+                                 id="txtINRFee"
+                                 name="txtINRFee"
                                  placeholder="Fee"
                                  required="required">
                         </div>
 
                         <div class="form-group">
                           <label for="Penalty">Penalty Price*</label>
-                          <input type="number" 
-                                 class="form-control" 
-                                 id="Penalty" 
-                                 name="Penalty" 
+                          <input type="number"
+                                 class="form-control"
+                                 id="Penalty"
+                                 name="Penalty"
                                  placeholder="Penalty Price"
                                  required="required">
                         </div>
 
                         <div class="form-group">
                           <label for="exampleInputEmail1">Image*</label>
-                          <input type="file" 
-                                 class="form-control" 
-                                 id="txtIImage" 
-                                 name="txtIImage" 
+                          <input type="file"
+                                 class="form-control"
+                                 id="txtIImage"
+                                 name="txtIImage"
                                  onchange="readURL(this)">
                         </div>
                         <div class="form-group">
-                          <img width="100%" 
+                          <img width="100%"
                                  id="preview"
                                  name="preview">
                         </div>
@@ -94,7 +94,7 @@
                       </div><!-- /.box-body -->
 
                       <div class="box-footer">
-                        <center><button type="submit" 
+                        <center><button type="submit"
                                         class="btn btn-primary btn-flat"
                                         id="btnSubmit">Submit</button></center>
                       </div>
@@ -131,19 +131,19 @@
                             <td>{{ $it -> ItemRentalRes }}</td>
                             <td>{{ $it -> ItemRentalNRes }}</td>
                             <td>{{ $it -> Penalty }}</td>
-                            <td><button type = "button" 
+                            <td><button type = "button"
                                         class = "btn btn-block btn-info btn-xs"
                                         data-toggle = "modal"
                                         data-target = "#viewImage"
                                         onclick = "modalEdit({{ $it -> ItemTypeID }})"> View </button></td>
-                            <td><button class="btn btn-xs btn-success btn-flat" 
-                                        data-toggle="modal" 
+                            <td><button class="btn btn-xs btn-success btn-flat"
+                                        data-toggle="modal"
                                         data-target="#edit"
                                         onclick = "modalEdit({{ $it -> ItemTypeID }})">
                                           <i class="fa fa-pencil"></i>
                                 </button>
                                 <button class="btn btn-xs btn-danger btn-flat"
-                                        data-toggle="modal" 
+                                        data-toggle="modal"
                                         data-target="#delete"
                                         onclick = "modalDelete({{ $it -> ItemTypeID }})">
                                           <i class="fa fa-remove"></i>
@@ -161,8 +161,8 @@
 
           <div class="modal fade" id="viewImage">
             <div class="modal-dialog">
-          
-              
+
+
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -171,24 +171,24 @@
                   </div>
                 <!-- modal content -->
                   <div class="modal-body">
-                
+
                       <div class="box-body">
                         <div class="form-group">
                           <div class="col-sm-12">
                             <img width="100%" id="vImage">
                           </div>
                         </div>
-                        
+
                       </div>
                       <!-- /.box-body -->
-                    
+
                   </div>
 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
                 </div><!-- /.modal-content -->
-       
+
             </div>
             <!-- /.modal-dialog -->
           </div>
@@ -196,7 +196,7 @@
 
               <div class="modal fade" id="edit">
                 <div class="modal-dialog">
-              
+
                   <form class="form-horizontal" onsubmit="return false" action = "{{URL::to('updateItemType')}}" enctype="multipart/form-data" id = "updateForm">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -206,7 +206,7 @@
                       </div>
                     <!-- modal content -->
                       <div class="modal-body">
-                    
+
                           <div class="box-body">
                             <div class="form-group">
                               <label  class="col-sm-3 control-label">ID:</label>
@@ -269,7 +269,7 @@
                             </div>
                           </div>
                           <!-- /.box-body -->
-                        
+
                       </div>
 
                       <div class="modal-footer">
@@ -286,7 +286,7 @@
 
               <div class="modal fade" id="delete">
                 <div class="modal-dialog">
-              
+
                   <form class="form-horizontal" onsubmit="return false" action = "{{URL::to('deleteItemType')}}" enctype="multipart/form-data" id = "deleteForm">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -296,7 +296,7 @@
                       </div>
                     <!-- modal content -->
                       <div class="modal-body">
-                    
+
                           <div class="box-body">
                            <div class="form-group">
                               <label  class="col-sm-3 control-label">ID:</label>
@@ -351,7 +351,7 @@
                             </div>
                           </div>
                           <!-- /.box-body -->
-                        
+
                       </div>
 
                       <div class="modal-footer">
@@ -384,9 +384,9 @@
                       processData: false,
                       success: function(data){
 
-                        $('#SuccessBox').append('<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Success!</h4>Record has been successfully added</div>');  
+                        $('#SuccessBox').append('<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Success!</h4>Record has been successfully added</div>');
 
-                        
+
                         tbl.clear().draw();
                         $.each(data.itemType, function(key, val){
                           tbl.row.add([
@@ -400,7 +400,7 @@
                             '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick = "modalEdit('+ val.ItemTypeID +')"><i class="fa fa-pencil"></i></button> ' +
                                 '<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" onclick = "modalDelete('+ val.ItemTypeID +')"> <i class="fa fa-remove"></i></button>'
 
-                            
+
                           ]).draw(false);
                         });
                       },
@@ -437,7 +437,7 @@
                             '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick = "modalEdit('+ val.ItemTypeID +')"><i class="fa fa-pencil"></i></button> ' +
                                 '<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" onclick = "modalDelete('+ val.ItemTypeID +')"> <i class="fa fa-remove"></i></button>'
 
-                            
+
                           ]).draw(false);
                         });
                       },
@@ -476,7 +476,7 @@
                             '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick = "modalEdit('+ val.ItemTypeID +')"><i class="fa fa-pencil"></i></button> ' +
                                 '<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" onclick = "modalDelete('+ val.ItemTypeID +')"> <i class="fa fa-remove"></i></button>'
 
-                            
+
                           ]).draw(false);
                         });
                       },
@@ -498,11 +498,11 @@
                 function readURL(input) {
                   if (input.files && input.files[0]) {
                       var reader = new FileReader();
-                      
+
                       reader.onload = function (e) {
                           $('#preview').attr('src', e.target.result);
                       }
-                      
+
                       reader.readAsDataURL(input.files[0]);
                   }
                   else{
@@ -514,12 +514,12 @@
                 function readURLforEdit(input) {
                   if (input.files && input.files[0]) {
                       var reader = new FileReader();
-                      
+
                       reader.onload = function (e) {
                           $('#etxtIImage').removeAttr('src');
                           $('#etxtIImage').attr('src', e.target.result);
                       }
-                      
+
                       reader.readAsDataURL(input.files[0]);
                   }
                   else{
@@ -545,7 +545,7 @@
                         $('#ePenalty').val(val.Penalty);
 
                         $('#etxtIImage').attr('src', "{{ asset ('bower_components/admin-lte/dist/images/" + val.ItemImage + "')}}");
-                        
+
 
                         $('#vImage').attr('src', "{{ asset ('bower_components/admin-lte/dist/images/" + val.ItemImage + "')}}");
                       });

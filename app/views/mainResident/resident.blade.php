@@ -2,11 +2,9 @@
 
 @section('content')
 
-		<section class="content-header">
-            <h1>
-              Maintenance <small>  </small>
 
-            </h1>
+		<section class="content-header">
+            <h1>Maintenance <small> Resident </small> </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Maintenance</a></li>
               <li class="active">Resident</li>
@@ -98,7 +96,7 @@
                                   <div class="col-sm-4">
                                     <td> <input type="text" class="form-control" id = "txtLName1" placeholder="Last Name*" required></td>
                                     <td><input type="text" class="form-control" id = "txtFName1" placeholder="Given Name*" required></td>
-                                    <td><input type="text" class="form-control" id = "txtMName1" placeholder="Middle Name"></td>
+                                    <td><input type="text" class="form-control" id = "txtMName1" placeholder="Middle Name" required></td>
                                   </div>
                               </tr>
 
@@ -400,7 +398,7 @@
                   <div class="box-header with-border">
                     <h3 class="box-title">List of Residents</h3>
                     <div class="box-tools pull-right">
-                      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     </div><!-- /.box-tools -->
                   </div><!-- /.box-header -->
 
@@ -415,6 +413,7 @@
                           <th rowspan="2">Resident No.</th>
                           <th rowspan="2">Name</th>
                           <th rowspan="2">Address</th>
+						  <th rowspan="2">State of Living</th>
                           <th colspan="7">Personal Details</th>
                           <th colspan="3">Contact Details</th>
                           <th colspan="3">Health Details</th>
@@ -456,18 +455,20 @@
                                           onclick = "modalEdit(this)">
                                             <i class="fa fa-pencil"></i>
                                   </button>
-                                  <!-- <button class="btn btn-xs btn-danger btn-flat"
+                                  <button class="btn btn-xs btn-danger btn-flat"
                                           data-toggle="modal"
                                           data-target="#delete"
                                           value = "{{$resi -> ResidentID}}"
                                           onclick = "modalDelete(this)">
                                             <i class="fa fa-remove"></i>
-                                  </button> --></td>
+                                  </button>
+							  </td>
                               <td>{{ $resi -> HouseID }}</td>
                               <td>{{ $resi -> FamilyID }}</td>
                               <td>{{ $resi -> ResidentID }}</td>
                               <td>{{ $resi -> LastName}}, {{ $resi -> FirstName}} {{ $resi -> MidName}}</td>
                               <td>{{ $resi -> HouseAddNo}} {{ $resi -> HouseStreet}} St, Zone {{ $resi -> HouseZone}}</td>
+							  <td>{{ $resi -> StateofLiving }}</td>
                               <td>{{ $resi -> RelationHead }}</td>
                               <td>{{ $resi -> ResidencyStat }}</td>
                               <td>{{ $resi -> Birthdate }}</td>
@@ -514,32 +515,20 @@
 
      <script type="text/javascript">
         var ctr=2;
-
       $(document).ready(function(){
-
         $('#btnAdd').click(function(){
-
-          $('#name').append('<tr id="rowName' + (ctr) + '"> <div class="col-sm-4"> <td><input type="text" class="form-control" id = "txtLName' + (ctr) + '" placeholder="Last Name*" required></td> <td><input type="text" class="form-control" id = "txtFName' + (ctr) + '" placeholder="Given Name*" required></td> <td><input type="text" class="form-control" id = "txtMName' + (ctr) + '" placeholder="Middle Name"></td> </div> </tr>');
-
+          $('#name').append('<tr id="rowName' + (ctr) + '"> <div class="col-sm-4"> <td><input type="text" class="form-control" id = "txtLName' + (ctr) + '" placeholder="Last Name*" required></td> <td><input type="text" class="form-control" id = "txtFName' + (ctr) + '" placeholder="Given Name*" required></td> <td><input type="text" class="form-control" id = "txtMName' + (ctr) + '" placeholder="Middle Name*" required></td> </div> </tr>');
           $('#table2').append('<tr id="rowContact' + (ctr) + '"><td><select class="form-control" id="txtCivil' + (ctr) + '" required> <option>Single</option> <option>Married</option> <option>Divorced</option> <option>Widowed</option> <option>Separated</option> </select></td> <td><select class="form-control" id="txtReligion' + (ctr) + '" required> <option>Roman Catholic</option> <option>Born-again Christian</option> <option>Iglesia ni Cristo</option> <option>Orthodoxy</option> <option>Protestantism</option> <option>Mormon</option> <option>Islam</option> <option>Buddhism</option> <option>Judaism</option> <option>Hinduism</option> <option>Islam</option> <option>Others</option> </select></td> <td><input type=text class="form-control" id="txtMobile' + (ctr) + '"></td> <td><input type=text class="form-control" id="txtLine' + (ctr) + '"></td> <td><input type=email class="form-control" id="txtEmail' + (ctr) + '"></td> </tr>');
-
           $('#table3').append('<tr id="rowHealth' + (ctr) + '"> <td><input type=text class="form-control" id="txtHeight' + (ctr) + '" value = 0  required></td> <td><input type=text class="form-control" id="txtWeight' + (ctr) + '" value = 0 onkeyup = "getHealth('+ctr+')" step="any" required></td> <td><input type=text class="form-control" readonly id="txtBMI' + (ctr) + '"></td> <td><input type=text class="form-control" readonly id="txtHealthStat' + (ctr) + '"></td> </tr>');
-
           $('#table1').append(' <tr id="rowPersonal' + (ctr) + '"> <td><select id="txtRelation' + (ctr) + '" class="form-control"><option>Husband</option><option>Wife</option><option>Son</option><option>Daughter</option><option>Son-in-law</option><option>Daughter-in-law</option><option>Father-in-law</option><option>Mother-in-law</option><option>Grandson</option><option>Granddaughter</option><option>Father</option><option>Mother</option><option>Brother</option><option>Sister</option><option>Relative-male</option><option>Relative-female</option><option>Househelp-male</option><option>Househelp-female</option><option>Tenant/Boarder</option></select></td> <td><select id="txtResidency' + (ctr) + '" class="form-control"> <option>Own house</option> <option>Renter</option> </select></td> <td><input type=date class="form-control" id="txtBday' + (ctr) + '" onkeyup="getAge('+ctr+')" step="any" required></td> <td><input type=text style="width:50px" class="form-control" id="txtAge' + (ctr) + '" readonly></td> <td><input type=text class="form-control" id="txtBPlace' + (ctr) + '" required></td> <td style="width:100px;align:center"><input type="radio" value="Male" name="btnGender' + (ctr) + '" id="btnGender' + (ctr) + '" checked>Male <input type="radio" value="Female" id="btnGender' + (ctr) + '" name="btnGender' + (ctr) + '">Female</td>  </tr>');
-
           $('#table4').append(' <tr id="rowEduc' + (ctr) + '"> <td align="center"><select class="form-control" id="txtCurrentStud' + (ctr) + '" onclick = "getEduc('+ctr+')" required> <option>Yes</option> <option>No</option> </select></td> <td><select class="form-control"  id="txtRecentEd' + (ctr) + '">  <option disabled selected></option><option>Pre-school/Day Care/Kinder</option> <option>Grade 1</option> <option>Grade 2</option> <option>Grade 3</option> <option>Grade 4</option> <option>Grade 5</option> <option>Grade 6</option> <option>Grade 7</option> <option>Grade 8</option> <option>Grade 9</option> <option>Grade 10</option> <option>Grade 11</option> <option>Grade 12</option> <option>Vocational Course</option> <option>1st Year College</option> <option>2nd Year College</option> <option>3rd Year College</option> <option>4th Year College</option> <option>5th Year College</option> <option>Masters-Post Graduate</option> <option>Doctoral-Post Graduate</option> </select> </td> <td><select class="form-control"  id="txtHighestEd' + (ctr) + '">  <option disabled selected></option><option>Never been in school</option> <option>Elementary Level</option> <option>Elementary Graduate</option> <option>Highschool Level</option> <option>Highschool Graduate</option> <option>College Level</option> <option>College Graduate</option> <option>Post Graduate Level</option> <option>Post Graduate Master</option> <option>Graduate Doctoral</option> </select></td> <td align="center"><input type="radio" value="Yes" id="btnRead' + (ctr) + '" name="btnRead'+(ctr)+'" checked>Yes <input type="radio" value="No" id="btnRead' + (ctr) + '" name="btnRead'+(ctr)+'">No</td> <td align="center"><input type="radio" value="Yes" id="btnWrite' + (ctr) + '" name="btnWrite'+(ctr)+'" checked>Yes <input type="radio" value="No" id="btnWrite' + (ctr) + '" name="btnWrite'+(ctr)+'">No</td> </select></td> </tr>');
-
            $('#table5').append('<tr id="rowEcon' + (ctr) + '"> <td align="center"><select class="form-control" id="txtCurrentEmp' + (ctr) + '" onclick = "getEcon('+ctr+')" required> <option>Yes</option> <option>No</option> </select></td> <td><input type=text class="form-control" id="txtOccupation' + (ctr) + '"></td> <td><input type=text class="form-control"  id="txtSalary' + (ctr) + '"></td> </select></td> </tr>');
-
 
             $('#trytry').val(ctr);
              ctr++;
-
         });//btnadd
-
         $('#btnRemove').click(function(){
             var x = $('#trytry').val();
-
             $('#rowName'+x).remove();
             $('#rowContact'+x).remove();
             $('#rowEduc'+x).remove();
@@ -547,13 +536,9 @@
             $('#rowEcon'+x).remove();
             $('#rowHealth'+x).remove();
             x--;
-
             $('#trytry').val(x);
-
         });//btnremove
-
       });
-
     </script>
 
 
@@ -572,180 +557,147 @@
                               stateSave: true
                             });
 
-
-
-
-
                    $('#btnSubmit').click(function(e){
                     e.preventDefault();
-
                     var x = parseInt(document.getElementById("trytry").value);
                     var houseid = $("#drop").val();
-
-										$.ajax({
+                    $.ajax({
                       type: 'POST',
                       url: 'addFamily',
                       data: {houseid:houseid},
-											error: function(request, error){
-												console.log(arguments);
-												alert("cant do this because: " + error);
-											},
                       success: function(data){
-
+                      },
+                      error: function(request, error){
+                        console.log(arguments);
+                        alert("cant do this because: " + error);
                       }
-
-
                     }).error(function(ts){
                       alert(ts.responseText);
                     });
 
-										for(var i = 1; i <= x; i++) {
-											if(i == x)
-												alert('Records are successfully added!');
-												var lname = $('#txtLName'+i).val();
-												var fname = $('#txtFName'+i).val();
-												var mname = $('#txtMName'+i).val();
-												var relationhead = $('#txtRelation'+i).val();
-												var restype = $('#txtResidency'+i).val();
-												var bdate = $('#txtBday'+i).val();
-												var bplace = $('#txtBPlace'+i).val();
-												var gender = $("input[name='btnGender" + i +"']:checked").val();
-												var civil = $('#txtCivil'+i).val();
-												var religion = $('#txtReligion'+i).val();
-												var mobileno = $('#txtMobile'+i).val();
-												var telno = $('#txtLine'+i).val();
-												var email = $('#txtEmail'+i).val();
-												var height = $('#txtHeight'+i).val();
-												var weight = $('#txtWeight'+i).val();
-												var healthstat = $('#txtHealthStat'+i).val();
-												var currentstud = $('#txtCurrentStud'+i).val();
-												var currentlevel = $('#txtRecentEd'+i).val();
-												var highestlevel = $('#txtHighestEd'+i).val();
-												var read = $("input[name='btnRead" + i +"']:checked").val();
-												var write = $("input[name='btnWrite" + i +"']:checked").val();
-												var currentemp = $('#txtCurrentEmp'+i).val();
-												var occup = $('#txtOccupation'+i).val();
-												var salary = $('#txtSalary'+i).val();
+                for(var i = 1; i <= x; i++) {
 
+                    var lname = $('#txtLName'+i).val();
+                    var fname = $('#txtFName'+i).val();
+                    var mname = $('#txtMName'+i).val();
+                    var relationhead = $('#txtRelation'+i).val();
+                    var restype = $('#txtResidency'+i).val();
+                    var bdate = $('#txtBday'+i).val();
+                    var bplace = $('#txtBPlace'+i).val();
+                    var gender = $("input[name='btnGender" + i +"']:checked").val();
+                    var civil = $('#txtCivil'+i).val();
+                    var religion = $('#txtReligion'+i).val();
+                    var mobileno = $('#txtMobile'+i).val();
+                    var telno = $('#txtLine'+i).val();
+                    var email = $('#txtEmail'+i).val();
+                    var height = $('#txtHeight'+i).val();
+                    var weight = $('#txtWeight'+i).val();
+                    var healthstat = $('#txtHealthStat'+i).val();
+                    var currentstud = $('#txtCurrentStud'+i).val();
+                    var currentlevel = $('#txtRecentEd'+i).val();
+                    var highestlevel = $('#txtHighestEd'+i).val();
+                    var read = $("input[name='btnRead" + i +"']:checked").val();
+                    var write = $("input[name='btnWrite" + i +"']:checked").val();
+                    var currentemp = $('#txtCurrentEmp'+i).val();
+                    var occup = $('#txtOccupation'+i).val();
+                    var salary = $('#txtSalary'+i).val();
 
-												$.ajax({
-													type: 'POST',
-													url: 'addResident',
-													data: {
-																	houseid:$('#drop').val(),
-																	lname: lname,
-																	fname: fname,
-																	mname: mname,
-																	relationhead: relationhead,
-																	restype: restype,
-																	bdate: bdate,
-																	bplace: bplace,
-																	gender: gender,
-																	civil: civil,
-																	religion: religion,
-																	mobileno: mobileno,
-																	telno: telno,
-																	email: email,
-																	height: height,
-																	weight: weight,
-																	healthstat: healthstat,
-																	currentstud: currentstud,
-																	currentlevel: currentlevel,
-																	highestlevel: highestlevel,
-																	read: read,
-																	write: write,
-																	currentemp: currentemp,
-																	occup: occup,
-																	salary: salary
-																},
-													dataType: 'JSON',
+                    $.ajax({
+                      type: 'POST',
+                      url: 'addResident',
+                      data: {
+                              houseid:$('#drop').val(),
+                              lname: lname,
+                              fname: fname,
+                              mname: mname,
+                              relationhead: relationhead,
+                              restype: restype,
+                              bdate: bdate,
+                              bplace: bplace,
+                              gender: gender,
+                              civil: civil,
+                              religion: religion,
+                              mobileno: mobileno,
+                              telno: telno,
+                              email: email,
+                              height: height,
+                              weight: weight,
+                              healthstat: healthstat,
+                              currentstud: currentstud,
+                              currentlevel: currentlevel,
+                              highestlevel: highestlevel,
+                              read: read,
+                              write: write,
+                              currentemp: currentemp,
+                              occup: occup,
+                              salary: salary
+                            },
+                      dataType: 'JSON',
+                      success: function(data){
+                        alert('Records are successfully added!');
+                        tbl.clear().draw();
+                        $.each(data.res, function(key, val){
+                          tbl.row.add([
+                            '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" value = "'+val.ResidentID+'" onclick = "modalEdit(this)"> <i class="fa fa-pencil"></i> </button> ',
+                            '<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" value = "'+val.ResidentID+'" onclick = "modalDelete(this)"><i class="fa fa-remove"></i></button>',
+                            val.HouseID,
+                            val.FamilyID,
+                            val.ResidentID,
+                            val.LastName+", " + val.FirstName +" "+ val.MidName,
+                            val.HouseAddNo+" " + val.HouseStreet +"St. Zone "+ val.HouseZone,
+                            val.RelationHead,
+                            val.ResidencyStat,
+                            val.Birthdate,
+                            val.Birthplace,
+                            val.Gender,
+                            val.CivilStat,
+                            val.Religion,
+                            val.MobileNo,
+                            val.TelNo,
+                            val.EmailAdd,
+                            val.Height,
+                            val.Weight,
+                            val.HealthStat,
+                            val.CurrStudy,
+                            val.CurrLevel,
+                            val.HighLevel,
+                            val.ReadLiteracy,
+                            val.WriteLiteracy,
+                            val.CurrEmployed,
+                            val.Occupation,
+                            val.Salary
+                            ]).draw(false);
+                        });
 
-													success: function(data){
-
-														tbl.clear().draw();
-
-														$.each(data.res, function(key, val){
-															tbl.row.add([
-
-																'<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" value = "'+val.ResidentID+'" onclick = "modalEdit(this)"> <i class="fa fa-pencil"></i> </button> ',
-																/*'<button class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#delete" value = "'+val.ResidentID+'" onclick = "modalDelete(this)"><i class="fa fa-remove"></i></button>'*/
-																val.HouseID,
-																val.FamilyID,
-																val.ResidentID,
-																val.LastName+", " + val.FirstName +" "+ val.MidName,
-																val.HouseAddNo+" " + val.HouseStreet +"St. Zone "+ val.HouseZone,
-																val.RelationHead,
-																val.ResidencyStat,
-																val.Birthdate,
-																val.Birthplace,
-																val.Gender,
-																val.CivilStat,
-																val.Religion,
-																val.MobileNo,
-																val.TelNo,
-																val.EmailAdd,
-																val.Height,
-																val.Weight,
-																val.HealthStat,
-																val.CurrStudy,
-																val.CurrLevel,
-																val.HighLevel,
-																val.ReadLiteracy,
-																val.WriteLiteracy,
-																val.CurrEmployed,
-																val.Occupation,
-																val.Salary
-
-																]).draw(false);
-
-														});
-													},
-													error: function(request, error){
-														console.log(arguments);
-														alert(error);
-													}//error
-
-												}).error(function(ts){
-													alert(ts.responseText);
-												});//error
-
-
-
-												$('#txtLName'+i).val("");
-												$('#txtFName'+i).val("");
-												$('#txtMName'+i).val("");
-												$('#txtBday'+i).val("");
-												$('#txtBPlace'+i).val("");
-												$('#txtMobile'+i).val("");
-												$('#txtLine'+i).val("");
-												$('#txtEmail'+i).val("");
-												$('#txtHeight'+i).val("");
-												$('#txtWeight'+i).val("");
-												$('#txtOccupation'+i).val("");
-												$('#txtSalary'+i).val("");
-
-
-
-										}//for
-
+                      },
+                      error: function(request, error){
+                        console.log(arguments);
+                        alert(error);
+                      }//error
+                    }).error(function(ts){
+                      alert(ts.responseText);
+                    });//error
+                    $('#txtLName'+i).val("");
+                    $('#txtFName'+i).val("");
+                    $('#txtMName'+i).val("");
+                    $('#txtBday'+i).val("");
+                    $('#txtBPlace'+i).val("");
+                    $('#txtMobile'+i).val("");
+                    $('#txtLine'+i).val("");
+                    $('#txtEmail'+i).val("");
+                    $('#txtHeight'+i).val("");
+                    $('#txtWeight'+i).val("");
+                    $('#txtOccupation'+i).val("");
+                    $('#txtSalary'+i).val("");
+               }//for
                });
-
-
-
-
-
-
-						 });//document
+              });//document
         </script>
 
         <script type="text/javascript">
         $(document).ready(function(){
-
          $("#drop").select2().change(function () {
-
-
            // var selectedValue = $(this).val();
-
                   $.ajax({
                       type: 'POST',
                       url: 'getRInfo',
@@ -761,8 +713,6 @@
                            $('#tmiddle').val(val.HMidName);
 
                         });
-
-
                       },
                       error: function(request, error){
                         console.log(arguments);
@@ -773,15 +723,10 @@
                     });
           });
         });
-
-
         </script>
 
   <script type="text/javascript">
                 function modalEdit(x){
-
-
-
                   $.ajax({
                       type: 'POST',
                       url: 'getResInfo',
@@ -799,7 +744,6 @@
                           var weight = parseInt(val.Weight);
                           var c = (weight/(height*height));
                           var n = c.toFixed(2);
-
                           $('#etxtBMI').val(n);
                           $('#etxtAge').val(age);
                           $('#etxtID').val(val.ResidentID);
@@ -828,15 +772,10 @@
                           $('#etxtOccupation').val(val.Occupation);
                           $('#etxtSalary').val(val.Salary);
                         });
-
-
                       }
                     });
                 }
-
-
                 function modalDelete(x){
-
                   $.ajax({
                       type: 'POST',
                       url: 'getResInfo',
@@ -848,15 +787,11 @@
                           $('#dtxtFName').val(val.FirstName);
                           $('#dtxtMName').val(val.MidName);
                           $('#dtxtLName').val(val.LastName);
+
                         });
-
-
                       }
                     });
-
-
                 }
-
 </script>
 
 
@@ -868,11 +803,9 @@
         var i = parseInt(x);
         var height = parseFloat(document.getElementById("txtHeight"+i).value);
         var weight = parseInt(document.getElementById("txtWeight"+i).value);
-
         var c = (weight/(height*height));
         var n = c.toFixed(2);
         $('#txtBMI'+i).val(n);
-
 
         if(n < 16){
             document.getElementById('txtHealthStat'+i).value = "Severely Underweight";}
@@ -887,28 +820,21 @@
         else if (n == null){
             document.getElementById('txtHealthStat'+i).value = "Jom";}
 
-
     }//Health
-
-
      function getEduc(x)
     {
-
         var i = parseInt(x);
-
         if(document.getElementById('txtCurrentStud'+i).value == "Yes" )
         {
             document.getElementById('txtRecentEd'+i).disabled = false;
             $('#txtRecentEd'+i).val("");
             document.getElementById('txtHighestEd'+i).disabled = true;
-
         }
         else if(document.getElementById('txtCurrentStud'+i).value == "No" )
         {
             document.getElementById('txtRecentEd'+i).disabled = true;
             document.getElementById('txtHighestEd'+i).disabled = false;
             $('#txtHighestEd'+i).val("");
-
         }
         else
         {
@@ -916,7 +842,6 @@
             document.getElementById('txtHighestEd'+i).disabled = true;
         }
     }//Educ
-
     function getEcon(x)
     {
         var i = parseInt(x);
@@ -925,16 +850,13 @@
         {
             document.getElementById('txtOccupation'+i).disabled = false;
             document.getElementById('txtSalary'+i).disabled = false;
-
         }
         else if(document.getElementById('txtCurrentEmp'+i).value == "No" )
         {
             document.getElementById('txtOccupation'+i).disabled = true;
             document.getElementById('txtSalary'+i).disabled = true;
-
         }
     }//Econ
-
     function getAge(x)
     {
 
@@ -944,43 +866,31 @@
       var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
       $('#txtAge'+x).val(age);
     }//age
-
-
     function checkOwner(x) {
-
       var last =  $('#tlast').val();
       var first =  $('#tfirst').val();
       var mid =  $('#tmiddle').val();
-
-
       if (x.checked)
         {
              $('#txtLName1').val(last);
              $('#txtFName1').val(first);
              $('#txtMName1').val(mid);
         }
-
       else {
         $('#txtLName1').val(" ");
         $('#txtFName1').val(" ");
         $('#txtMName1').val(" ");
       }
 }
-
     function checkLastName(z) {
-
       var x = parseInt(document.getElementById("trytry").value);
       var last = $('#txtLName1').val();
-
-
       if (z.checked)
         {
             for(var i = 1; i <= x; i++) {
-
               $('#txtLName'+i).val(last);
             }//for
         }//if
-
       else {
             for(var i = 1; i <= x; i++) {
                   $('#txtLName'+i).val(" ");
@@ -991,4 +901,4 @@
 
 
  </section>
- @stop
+@stop

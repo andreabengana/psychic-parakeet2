@@ -371,10 +371,10 @@
 
                       <tr>
                         
-                        <td>Status:</td>
+                        <td>State of Living:</td>
                         <td><select class="form-control"  id="dtxtStatus">
                                       <option>Deceased</option>
-                                      <option>Departed</option>
+                                      <option>Moved Out</option>
                         </select></td>
 
                       </tr>
@@ -536,7 +536,8 @@
                               },
                         dataType: 'JSON',
                         success: function(data){
-                          tbl.clear().draw();
+                         /* tbl.clear().draw();*/
+						window.location.href = "{{URL::to('residentDetails')}}";						  
 
                         $.each(data.res, function(key, val){
                           tbl.row.add([
@@ -571,6 +572,7 @@
 
                             ]).draw(false);
                           });
+						 
                         }
                       });
                     });

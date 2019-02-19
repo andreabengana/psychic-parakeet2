@@ -4,16 +4,13 @@ class MainResidentController extends BaseController {
 
 	public function showRecords()
 	{
-		$resident = DB::table('tblresident')
-			->where('tblresident.status', '=', 'active')
-			->join('tblfamily', 'tblresident.FamilyID', '=', 'tblfamily.FamilyID')
-			->join('tblhouse', 'tblhouse.HouseID', '=', 'tblfamily.HouseID')
-			->get();
-
-		$household = DB::table('tblhouse')
-			->where('status', '=', 'active')
-			->get();
-
+			$resident = DB::table('tblresident')
+				->join('tblfamily', 'tblresident.FamilyID', '=', 'tblfamily.FamilyID')
+				->join('tblhouse', 'tblhouse.HouseID', '=', 'tblfamily.HouseID')
+				->get();
+			
+			$household = DB::table('tblhouse')
+				->get();
 		
 
 		return View::make('mainResident.resident')
@@ -129,7 +126,7 @@ class MainResidentController extends BaseController {
 						'CurrEmployed' => Input::get('currentemp'),
 						'Occupation' => Input::get('occup'),
 						'Salary' => Input::get('salary'),
-						'status' => 'active'
+						'StateofLiving' => 'Active'
 						)
 					));
 
@@ -164,7 +161,7 @@ class MainResidentController extends BaseController {
 			
 
 			$resident = DB::table('tblresident')
-			->where('tblresident.status', '=', 'active')
+			->where('tblresident.StateofLiving', '=', 'active')
 			->join('tblfamily', 'tblresident.FamilyID', '=', 'tblfamily.FamilyID')
 			->join('tblhouse', 'tblfamily.HouseID', '=', 'tblhouse.HouseID')
 			->get();
@@ -205,12 +202,12 @@ class MainResidentController extends BaseController {
 						'CurrEmployed' => Input::get('txt23'),
 						'Occupation' => Input::get('txt24'),
 						'Salary' => Input::get('txt25'),
-						'status' => 'active'
+						'StateofLiving' => 'Active'
 					));
 					
 
 			$resident = DB::table('tblresident')
-			->where('tblresident.status', '=', 'active')
+			->where('tblresident.StateofLiving', '=', 'Active')
 			->join('tblfamily', 'tblresident.FamilyID', '=', 'tblfamily.FamilyID')
 			->get();
 
@@ -226,7 +223,7 @@ class MainResidentController extends BaseController {
 			DB::table('tblresident')
 				->where('ResidentID', '=', Input::get('txt1'))
 				->update(array(
-					'status' => Input::get('txt2')
+					'StateofLiving' => Input::get('txt2')
 					));
 
 			   $fac = DB::table('tblresident')
@@ -250,7 +247,7 @@ class MainResidentController extends BaseController {
 					
 
 			$resident = DB::table('tblresident')
-			->where('tblresident.status', '=', 'active')
+			->where('tblresident.StateofLiving', '=', 'active')
 			->join('tblfamily', 'tblresident.FamilyID', '=', 'tblfamily.FamilyID')
 			->get();
 

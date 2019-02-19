@@ -3,16 +3,16 @@
 @section('content')
 
 <section class="content-header">
-          
+
             <h1>Dashboard</h1>
-</section>           
+</section>
 <section class="content">
 <!-- Info boxes -->
       <div class="row">
          <div class="box-body">
               <div class="well" style="background-color: #007acc; color:white;">
                 <div class="col-md-8">
-                  <h4><i class="fa fa-sun-o"></i>  Good Day MATE, <b>{{ Session::get('firstname') }} {{ Session::get('lastname') }}</b>!
+                  <h4><i class="fa fa-sun-o"></i>  Good Day, <b>{{ Session::get('firstname') }} {{ Session::get('lastname') }}</b>!
                   <h5>Barangay {{ Session::get('position') }}</h5>
                 </div><br>
 
@@ -46,7 +46,7 @@
                           <th>Payment Status</th>
                         </tr>
                       </thead>
-                      
+
                       <tbody>
                        @foreach ($res as $r)
                         <tr>
@@ -68,10 +68,10 @@
               <div class="tab-pane" id="tab_2-2">
                 <table class="table table-striped">
                 <!--      <table  class="table table-bordered table-striped">-->
-                        
+
                       <thead>
                         <tr>
-                          
+
                           <th>Request No.</th>
                           <th>Date Requested</th>
                           <th>Business Name</th>
@@ -82,30 +82,30 @@
                         </tr>
                       </thead>
                       <tbody>
-                      
+
                         @foreach($breq as $breq)
                         <tr>
-                          
+
                           <td align="center"><span class="label label-warning">BD2016-{{$breq -> BusRequestID}}</span></td>
-                         
+
                           <td>{{$breq -> DateOfRequest}}</td>
-                          
+
 
                           <td> {{$breq -> BusinessName}} </td>
                           <td> {{$breq -> DocumentName}} </td>
 
                           <td>
-                           
+
                                 @if($breq->BusDocStatus == "New")
                                   <a  href="<?php echo 'createBusDocumentRequest' ?>?varname={{$breq->DocumentID}}&ReqID={{$breq->BusRequestID}}" class = "NEW btn btn-block btn-flat btn-primary btn-xs"> {{$breq -> BusDocStatus}}</a>
                                 @endif
-                                
+
                           </td>
 
-                        
+
                         </tr>
                         @endforeach
-                       
+
                       </tbody>
                     </table>
               </div>
@@ -114,10 +114,10 @@
 
                 <table class="table table-striped">
                 <!--      <table  class="table table-bordered table-striped">-->
-                        
+
                       <thead>
                         <tr>
-                          
+
                           <th>Request No.</th>
                           <th>Date Requested</th>
                           <th width="50px">Document</th>
@@ -127,16 +127,16 @@
                         </tr>
                       </thead>
                       <tbody>
-                      
+
                         @foreach($info as $info)
                         <tr>
-                          
-                          <td align="center"><span class="label label-warning">RD2016-{{$info -> RequestID}}</span></td>
-                         
-                          <td>{{$info -> DateOfRequest}}</td>
-                          
 
-                          <td> 
+                          <td align="center"><span class="label label-warning">RD2016-{{$info -> RequestID}}</span></td>
+
+                          <td>{{$info -> DateOfRequest}}</td>
+
+
+                          <td>
                               @foreach($docInfo as $di)
                                 @if($info->RequestID == $di->RequestID)
                                   {{$di -> DocumentName}}<br>
@@ -158,16 +158,16 @@
                                   <a  href="<?php echo 'createDocumentRequest' ?>?varname={{$di->DocumentID}}&ReqID={{$info->RequestID}}" class = "DON btn btn-block btn-flat bg-navy btn-xs" disabled> {{$di -> DocReqStatus}}</a>
                                  @elseif($di->DocReqStatus == "Cancelled")
                                   <a class = "CAN btn btn-block btn-flat btn-danger  btn-xs" disabled> {{$di -> DocReqStatus}}</a>
-                                
+
                                 @endif
                               @endif
                             @endforeach
                           </td>
 
-                        
+
                         </tr>
                         @endforeach
-                       
+
                       </tbody>
                     </table>
               </div>
@@ -185,7 +185,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Population Breakdown by <b>Gender</b></h3>
 
-            
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -217,14 +217,16 @@
 
           </div>
           <!-- /.box -->
+
+
         </div>
-      
-    
+
+
 
       <div class="col-md-7">
         <div class="box box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">Population Breakdown by <b>Street</b></h3>        
+              <h3 class="box-title">Population Breakdown by <b>Street</b></h3>
             </div>
             <div class="box-body">
               <div class="chart">
@@ -241,8 +243,53 @@
 
       </div>
 
+<div class="col-md-5">
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Population Breakdown by <b>Age</b></h3>
 
-      <div class="col-md-5">
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="chart-responsive">
+                    <canvas id="AgepieChart" height="150" ></canvas>
+                  </div>
+                  <!-- ./chart-responsive -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-3">
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-red"></i> 0-10</li>
+                    <li><i class="fa fa-circle-o text-green"></i> 11-20</li>
+					<li><i class="fa fa-circle-o text-yellow"></i> 21-30</li>
+					<li><i class="fa fa-circle-o text-orange"></i> 31-40</li>
+					<li><i class="fa fa-circle-o text-blue"></i> 41-50</li>
+					<li><i class="fa fa-circle-o text-black"></i> 51-60</li>
+					<li><i class="fa fa-circle-o text-maroon"></i> 61-70</li>
+					<li><i class="fa fa-circle-o text-lime"></i> 71-80</li>
+					<li><i class="fa fa-circle-o text-gray"></i> 81-90</li>
+					<li><i class="fa fa-circle-o text-aqua"></i> 91-100</li>
+                  </ul>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <a href="<?php echo 'residentDetails' ?>#viewRes" class="btn btn-flat btn-sm btn-default pull-right">View all <i class="fa fa-arrow-circle-right"></i> </a>
+            </div>
+            <!-- /.footer -->
+
+
+
+          </div>
+          <!-- /.box -->
+
+      <div class="col-md-15">
           <div class="box box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Recent Activities</h3>
@@ -291,19 +338,53 @@
   $(document).ready(function (){
 
 
-   
-    
+
+
 
     $.ajax({
       type: 'POST',
       url: 'countResInfo',
       dataType: 'JSON',
       success: function(data){
-              
+
                //-------------
                 //- PIE CHART -
                 //-------------
                 // Get context with jQuery - using jQuery's .get() method.
+				var one = 0, two = 0, three = 0, four = 0, five = 0, six = 0, seven = 0, eight = 0, nine = 0, ten = 0;
+				$.each(data.date, function(key, val){
+                   var today = new Date();
+                   var birthDate = new Date(val.Birthdate);
+
+                   var age = today.getFullYear()  - birthDate.getFullYear();
+                   var m = today.getMonth() - birthDate.getMonth();
+                      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
+                      {
+                        age--;
+                      }
+					  if (age <= 10){
+						one++;
+					  }else if (age >= 11 && age <=20){
+						two++;
+					  }else if (age >= 21 && age <=30){
+						three++;
+					  }else if (age >= 31 && age <=40){
+						four++;
+					  }else if (age >= 41 && age <=50){
+						five++;
+					  }else if (age >= 51 && age <=60){
+						six++;
+					  }else if (age >= 61 && age <=70){
+						seven++;
+					  }else if (age >= 71 && age <=80){
+						eight++;
+					  }else if (age >= 81 && age <=90){
+						nine++;
+					  }else if (age >= 91 && age <=100){
+						ten++;
+					  }
+                 });
+
                 var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
                 var pieChart = new Chart(pieChartCanvas);
                 var PieData = [
@@ -320,6 +401,72 @@
                     label: "Male"
                   },
                 ];
+
+				var AgepieChartCanvas = $("#AgepieChart").get(0).getContext("2d");
+                var AgepieChart = new Chart(AgepieChartCanvas);
+                var AgePieData = [
+                  {
+                    value: one,
+                    color: "#f56954",
+                    highlight: "#f56954",
+                    label: "0-10"
+                  },
+                  {
+                    value: two,
+                    color: "#00a65a",
+                    highlight: "#00a65a",
+                    label: "11-20"
+                  },
+				  {
+                    value: three,
+                    color: "#FFFF00",
+                    highlight: "#FFFF00",
+                    label: "21-30"
+                  },
+                  {
+                    value: four,
+                    color: "#FFA500",
+                    highlight: "#FFA500",
+                    label: "31-40"
+                  },
+				  {
+                    value: five,
+                    color: "#0000FF",
+                    highlight: "#0000FF",
+                    label: "41-50"
+                  },
+                  {
+                    value: six,
+                    color: "#000000",
+                    highlight: "#000000",
+                    label: "51-60"
+                  },
+				  {
+                    value: seven,
+                    color: "#800000",
+                    highlight: "#800000",
+                    label: "61-70"
+                  },
+                  {
+                    value: eight,
+                    color: "#00FF00",
+                    highlight: "#00FF00",
+                    label: "71-80"
+                  },
+				  {
+                    value: nine,
+                    color: "#808080",
+                    highlight: "#808080",
+                    label: "81-90"
+                  },
+                  {
+                    value: ten,
+                    color: "#00FFFF",
+                    highlight: "#00FFFF",
+                    label: "91-100"
+                  },
+                ];
+
                 var pieOptions = {
                   //Boolean - Whether we should show a stroke on each segment
                   segmentShowStroke: true,
@@ -347,11 +494,39 @@
                 //Create pie or douhnut chart
                 // You can switch between pie and douhnut using the method below.
                 pieChart.Doughnut(PieData, pieOptions);
-                        
+
+				var AgepieOptions = {
+                  //Boolean - Whether we should show a stroke on each segment
+                  segmentShowStroke: true,
+                  //String - The colour of each segment stroke
+                  segmentStrokeColor: "#fff",
+                  //Number - The width of each segment stroke
+                  segmentStrokeWidth: 2,
+                  //Number - The percentage of the chart that we cut out of the middle
+                  percentageInnerCutout: 0, // This is 0 for Pie charts
+                  //Number - Amount of animation steps
+                  animationSteps: 100,
+                  //String - Animation easing effect
+                  animationEasing: "easeOutBounce",
+                  //Boolean - Whether we animate the rotation of the Doughnut
+                  animateRotate: true,
+                  //Boolean - Whether we animate scaling the Doughnut from the centre
+                  animateScale: true,
+                  //Boolean - whether to make the chart responsive to window resizing
+                  responsive: true,
+                  // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+                  maintainAspectRatio: true,
+                  //String - A legend template
+                  legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+                };
+				AgepieChart.Pie(AgePieData, AgepieOptions);
+
           }
-      });              
-   
-      
+      });
+
+
+
+
   $.ajax({
       type: 'GET',
       url: 'countResStreetInfo',
@@ -417,7 +592,7 @@
         };
       barChartOptions.datasetFill = true;
       barChart.Bar(barChartData, barChartOptions);
-        
+
 
        }//success
       }).error(function(ts){

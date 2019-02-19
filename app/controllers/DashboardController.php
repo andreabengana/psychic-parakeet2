@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 class DashboardController extends BaseController {
 
 
@@ -78,23 +78,31 @@ class DashboardController extends BaseController {
 		if(Request::ajax()){
 			$male = DB::table('tblresident')
 				->where('Gender', '=', 'Male')
-				->where('status', '=', 'active')
+				->where('StateofLiving', '=', 'active')
 				->count();
 
 			$female = DB::table('tblresident')
-				->where('status', '=', 'active')
+				->where('StateofLiving', '=', 'active')
 				->where('Gender', '=', 'Female')
 				->count();
-			return Response::json(array('male' => $male, 'female' => $female ));
+				
+			$birthdates= DB::table('tblresident')
+				->where('StateofLiving', '=', 'active')
+				->select('Birthdate')
+				->get();
+				
+			return Response::json(array('male' => $male, 'female' => $female, 'date' => $birthdates ));
 		}
 	}
-
+	
+	
+	
 	public function countResStreetInfo(){
 
 		if(Request::ajax()){
 
 		// $street = DB::table('tblstreet')
-		// 		->where('status', '=', 'active')
+		// 		->where('status', '=', 'a ctive')
 
 		// 		->get();
 
@@ -105,10 +113,6 @@ class DashboardController extends BaseController {
 			->leftJoin('tblresident', 'tblfamily.FamilyID', '=', 'tblresident.FamilyID')
 			->groupBy('StreetID')
 			->get();
-
-
-
-
 
 			return Response::json(array('res' => $resident ));
 		}
