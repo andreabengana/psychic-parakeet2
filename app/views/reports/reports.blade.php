@@ -67,7 +67,7 @@
             <div class="box-footer no-padding">
               <div class = "col-md-12">
 
-                <button type="button" class="btn btn-primary" style="width:100%" id = "btnReport1" data-target="#delete" data-toggle="modal">View Full Report
+                <button type="button" class="btn btn-primary"  style="width:100%" id = "btnReport1" data-target="#delete" data-toggle="modal">View Full Report
                 </button>
               </div>
               
@@ -163,7 +163,8 @@
 
 
     var startDate;
-var endDate;
+	var endDate;
+	var todayDate;
 // Get context with jQuery - using jQuery's .get() method.
 
     $.ajax({
@@ -205,6 +206,7 @@ var endDate;
 
 
         $('#daterange-btn').daterangepicker(
+		//$('#btnReport1').attr('disabled', false);
             {
               ranges: {
                 'Today': [moment(), moment()],
@@ -214,7 +216,9 @@ var endDate;
                 'This Month': [moment().startOf('month'), moment().endOf('month')],
                 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
               },
-              startDate: moment().subtract(29, 'days'),
+              //startDate: moment().subtract(29, 'days'),
+              //endDate: moment(),
+			  startDate: moment().add(1, 'days'),
               endDate: moment(),
 
 
@@ -236,11 +240,33 @@ var endDate;
         }
       });
 
-    $('#btnReport1').click(function(){
+    $('#btnReport1').click(function(){ 
+	  var sstartDate=  $("#daterange-btn").data('daterangepicker').startDate.format('MM-DD-YYYY');
+	  var eendDate=  $("#daterange-btn").data('daterangepicker').endDate.format('MM-DD-YYYY');
+	  //alert(sstartDate);
+	  //alert(eendDate);
+
+	var tomorrow = new Date();
+	var dd = tomorrow.getDate() + 1;
+	var mm = tomorrow.getMonth() + 1; //January is 0!
+	var yyyy = tomorrow.getFullYear();
+
+	if (dd < 10) {
+	  dd = '0' + dd;
+	}
+
+	if (mm < 10) {
+	  mm = '0' + mm;
+	}
+
+	tomorrow = mm + '-' + dd + '-' + yyyy;
+	//alert(tomorrow);
+	  
       var dates = $('#dateRangeDiv').html().split(" / ");
 
               var dateFrom = dates[0];
               var dateTo = dates[1];
+		
       $.ajax({
         type: 'POST',
         url: 'getReport1',
@@ -250,10 +276,24 @@ var endDate;
         },
         dataType: 'JSON',
         success: function(data){
+		
           //alert(JSON.stringify(data));
-         $('.modal-title').html($('#daterange-btn span').html());
+		if(sstartDate==tomorrow)
+		{
+			$('.modal-title').html("No Date Selected");
+			$('.daterep').html("No Date Selected");
+			//alert("parehas");
+		}
+		else
+		{
+		  $('.modal-title').html($('#daterange-btn span').html());
           
-          $('.daterep').html($('.modal-title').html());
+          $('.daterep').html($('#daterange-btn').html());
+		}
+         //$('.modal-title').html($('#daterange-btn span').html());
+          
+         // $('.daterep').html($('#daterange-btn').html());
+
 
           $('#report1Table').html('');
           $('#report1TableBreakdown').html('');
@@ -284,6 +324,7 @@ var endDate;
         alert(ts.responseText);
       });
     });
+
    });
     
   </script>

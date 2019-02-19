@@ -75,9 +75,15 @@
   $("#checkAllDoc").click(function(){
     $("input[name='DocName']").not(this).prop('checked', this.checked);
   });
+  $("input[name='DocName']").click(function(){
+	$("#checkAllDoc").prop("checked", false);
+  });
 
   $("#DocStatus").click(function(){
     $("input[name='DocStat']").not(this).prop('checked', this.checked);
+  });
+  $("input[name='DocStat']").click(function(){
+	$("#DocStatus").prop("checked", false);
   });
 
 

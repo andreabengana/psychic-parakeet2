@@ -74,9 +74,15 @@
   $("#checkAll").click(function(){
     $("input[name='ItemName']").not(this).prop('checked', this.checked);
   });
+  $("input[name='ItemName']").click(function(){
+	$("#checkAll").prop("checked", false);
+  });
 
   $("#checkAllStatus").click(function(){
     $("input[name='ItemStatus']").not(this).prop('checked', this.checked);
+  });
+  $("input[name='ItemStatus']").click(function(){
+	$("#checkAllStatus").prop("checked", false);
   });
 
 

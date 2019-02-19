@@ -154,7 +154,9 @@ var endDate;
                 'This Month': [moment().startOf('month'), moment().endOf('month')],
                 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
               },
-              startDate: moment().subtract(29, 'days'),
+              //startDate: moment().subtract(29, 'days'),
+              //endDate: moment(),
+			  startDate: moment().add(1, 'days'),
               endDate: moment(),
 
 
@@ -171,16 +173,36 @@ var endDate;
 
               getBusDateRange(pieChartBusDoc, pieOptions2, dateFrom2, dateTo2);
             }
-
+		//alert("Test");
         );
 
         }
       });
 
     $('#btnViewBusDocs').click(function(){
+	  var sstartDate=  $("#btnBusDocs").data('daterangepicker').startDate.format('MM-DD-YYYY');
+	  var eendDate=  $("#btnBusDocs").data('daterangepicker').endDate.format('MM-DD-YYYY');
+	  //alert(sstartDate);
+	  //alert(eendDate);
+
+	var tomorrow = new Date();
+	var dd = tomorrow.getDate() + 1;
+	var mm = tomorrow.getMonth() + 1; //January is 0!
+	var yyyy = tomorrow.getFullYear();
+
+	if (dd < 10) {
+	  dd = '0' + dd;
+	}
+
+	if (mm < 10) {
+	  mm = '0' + mm;
+	}
+
+	tomorrow = mm + '-' + dd + '-' + yyyy;
+	//alert(tomorrow);
 
       var dates2 = $('#hiddenBusDocs').html().split(" / ");
-
+	  
               var dateFrom = dates2[0];
               var dateTo = dates2[1];
       $.ajax({
@@ -193,11 +215,23 @@ var endDate;
         dataType: 'JSON',
         success: function(data){
           //alert(JSON.stringify(data));
-          $('.modal-title').html($('#btnBusDocs span').html());
+		if(sstartDate==tomorrow)
+		{
+			$('.modal-title').html("No Date Selected");
+			$('.daterep').html("No Date Selected");
+			//alert("parehas");
+		}
+		else
+		{
+		  $('.modal-title').html($('#btnBusDocs span').html());
           
-          $('.daterep').html($('.modal-title').html());
-
-          $('#report2Table').html('');
+          $('.daterep').html($('#btnBusDocs').html());
+		}
+         //$('.modal-title').html($('#btnBusDocs span').html());
+          
+         // $('.daterep').html($('#btnBusDocs').html());
+		  
+		  $('#report2Table').html('');
           $('#report2TableBreakdown').html('');
 
           $('#report2Table').append('<thead><th style="width:150px">RequestID</th><th style="width:150px">Name of Requestor</th><th style="width:150px">Document Name</th><th style="width:150px">Date Of Request</th></thead>');

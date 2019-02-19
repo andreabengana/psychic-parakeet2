@@ -67,10 +67,21 @@
 $("#OfficialPosition").click(function(){
 $("input[name='position']").not(this).prop('checked', this.checked);
 });
+$("input[name='position']").click(function(){
+	$("#OfficialPosition").prop("checked", false);
+});
 
 $("#OfficialStatus").click(function(){
 $("input[name='Offtatus']").not(this).prop('checked', this.checked);
+$("input[name='Offstatus']").not(this).prop('checked', this.checked);
 });
+$("input[name='Offtatus']").click(function(){
+	$("#OfficialStatus").prop("checked", false);
+});
+$("input[name='Offstatus']").click(function(){
+	$("#OfficialStatus").prop("checked", false);
+});
+
 
 $('#btnofficial').click(function()
 {

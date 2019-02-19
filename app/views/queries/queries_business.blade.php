@@ -57,6 +57,9 @@
     $("#checkAllBus").click(function(){
       $("input[name='BusName']").not(this).prop('checked', this.checked);
       });
+	$("input[name='BusName']").click(function(){
+		$("#checkAllBus").prop("checked", false);
+	});
 
     $('#btnBus').click(function()
     {
