@@ -5,7 +5,7 @@
           <section class="content-header">
             <h1>
               Maintenance <small>Item Quantity</small>
-              
+
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Maintenance</a></li>
@@ -29,17 +29,18 @@
                       <div class="box-body">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Quantity*</label>
-                          <input type="number" 
-                                 class="form-control" 
-                                 id="txtQuantity" 
+                          <input type="number"
+							                   	 min="1"
+                                 class="form-control"
+                                 id="txtQuantity"
                                  name="txtQuantity">
                         </div>
 
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Item Name*</label>
-                          <select type="text" 
-                                 class="form-control" 
-                                 id="txtItemType" 
+                          <label for="exampleInputEmail1">Item Type*</label>
+                          <select type="text"
+                                 class="form-control"
+                                 id="txtItemType"
                                  name="txtItemType" >
                                  <option selected="" disabled="">Select Item Type</option>
                                  @foreach($iType as $it)
@@ -48,15 +49,16 @@
                           </select>
                         </div>
 
-                        
+
 
                       </div><!-- /.box-body -->
 
                       <div class="box-footer">
-                        <center><button type="submit" 
+                        <center><button type="submit"
                                         class="btn btn-primary btn-flat"
                                         id="btnSubmit"
                                         data-toggle="modal"
+
                                         >Submit</button></center>
                       </div>
                     </form>
@@ -73,8 +75,9 @@
                       <thead>
                         <tr>
                           <th></th>
-                          <th>Item Number</th>
+                          <th>Items Code</th>
                           <th>Item Type</th>
+                          <th>Quantity</th>
                           <th>Status</th>
                           <th>Action</th>
                         </tr>
@@ -83,8 +86,9 @@
                         @foreach($iDetails as $id)
                           <tr>
                             <td> <input type = "text" value = "{{$id->DateTime}}" hidden>  </td>
-                            <td>{{ $id -> ItemCode }} - {{ $id -> ItemID }}</td>
+                            <td>{{ $id -> ItemCode }} - BATCH - {{ $id -> ItemID }}</td>
                             <td>{{ $id -> ItemName }}</td>
+                            <td>{{ $id -> ItemQuantity }}</td>
                             <td>{{ $id -> ItemStatus }}</td>
                             <td><button class="btn btn-xs btn-success btn-flat"
                                         data-toggle="modal"
@@ -118,7 +122,7 @@
               </div>
               <!-- modal content -->
               <div class="modal-body" >
-            
+
                   <div class="box-body">
                     <table class = "table table-striped">
                       <tbody>
@@ -135,7 +139,7 @@
                           <td><h5 id = "s"></h5></td>
                         </tr>
                         <tr>
-                          <td><h5>ID/s Numbers: </h5></td>
+                          <td><h5>Item Number(s): </h5></td>
                           <td><h5 id = "i"></h5></td>
                         </tr>
 
@@ -143,24 +147,24 @@
                     </table>
                   </div>
                   <!-- /.box-body -->
-                
+
               </div>
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
               </div><!-- /.modal-content -->
-              
+
             </div></div>
             <!-- /.modal-dialog -->
           </div>
           <!-- /.modal -->
-        
+
         </div>
 
 
           <div class="modal fade" id="edit">
             <div class="modal-dialog">
-          
+
               <form class="form-horizontal" >
                 <div class="modal-content">
                   <div class="modal-header">
@@ -192,11 +196,24 @@
                           </div>
 
                           <div class="col-sm-6">
-                            <input type="text" class="form-control" id = "etxtID" name = "etxtID" >
+                            <input type="text" class="form-control" id = "etxtID" name = "etxtID" readonly >
                             <input type="hidden" name="etxtOrigID" id="etxtOrigID">
                           </div>
 
 
+                        </div>
+
+                        <div class="form-group">
+                          <label  class="col-sm-3 control-label">Quantity:</label>
+
+                          <div class="col-sm-9">
+                            <input type="number"
+                                   min="0"
+                                 class="form-control"
+                                 id="etxtQuan"
+                                 name="etxtQuan">
+
+                          </div>
                         </div>
 
 
@@ -204,8 +221,8 @@
                           <label  class="col-sm-3 control-label">Status:</label>
 
                           <div class="col-sm-9">
-                            <select class="form-control" 
-                                    id = "etxtStatus" 
+                            <select class="form-control"
+                                    id = "etxtStatus"
                                     name = "etxtStatus" >
                               <option>Good</option>
                               <option>Under Maintenance</option>
@@ -235,7 +252,7 @@
 
           <div class="modal fade" id="delete">
             <div class="modal-dialog">
-          
+
               <form class="form-horizontal" >
                 <div class="modal-content">
                   <div class="modal-header">
@@ -272,13 +289,26 @@
 
                         </div>
 
+                         <div class="form-group">
+                          <label  class="col-sm-3 control-label">Quantity:</label>
+
+                          <div class="col-sm-9">
+                            <input type="number"
+                                   min="0"
+                                 class="form-control"
+                                 id="dtxtQuan"
+                                 name="dtxtQuan" readonly>
+
+                          </div>
+                        </div>
+
 
                         <div class="form-group">
                           <label  class="col-sm-3 control-label">Status:</label>
 
                           <div class="col-sm-9">
-                            <input type = "text" class="form-control" 
-                                    id = "dtxtStatus" 
+                            <input type = "text" class="form-control"
+                                    id = "dtxtStatus"
                                     name = "dtxtStatus" readonly>
                           </div>
                         </div>
@@ -300,7 +330,7 @@
 
 
 
-          
+
 
 
 
@@ -311,91 +341,75 @@
 
                   $('#btnSubmit').click(function(){
                     $('#Messages').html('');
-                    
-					var isEmpty= true;
-					var quant, itmType;
-					
-                    quant = $('#txtQuantity').val();
-                    itmType = $('#txtItemType').val();
-					
-					if(quant == '' || itmType == ''){
-						isEmpty = true;
-						alert('Please Fill Up All Details!');
-					}
-					else{
-						isEmpty = false;
-					}
-					
-					if(!isEmpty){ 
-					$('#addedItems').modal('show');
+
+
+                    var quan = $('#txtQuantity').val();
+                    var iType = $('#txtItemType').val();
+
                     $.ajax({
                       type: 'POST',
                       url: 'addItemDetails',
                       data: { quan: quan,
                               iType: iType},
                       dataType: 'JSON',
-                      success: function(data){
+                      error :function(){
 
+                        alert("Successfully Added!");
+
+                        location.reload();
+                      },
+                      success: function(data){
+                         $("#addedItems").modal('show');
                         $('#q').html(quan);
                         $('#t').html(data.it[0].ItemName);
                         $('#s').html(data.it[0].status);
 
                         if(data.ctr == 0)
                         {
-                          if(quan == 1)
-                          {
-                            $('#i').html(data.it[0].ItemCode + " - " + 1);
-                          }
-                          else
-                          {
-                            $('#i').html(data.it[0].ItemCode + " - " + 1 + "   to   " + data.it[0].ItemCode + " - " + quan);
-                          }
+
+                            $('#i').html(data.it[0].ItemCode + " - " + "BATCH - "+ 1);
+
                         }
                         else
                         {
-                          if(quan == 1)
-                          {
-                            $('#i').html(data.it[0].ItemCode + " - " + (data.te[0].ItemID+1));
-                          }
-                          else
-                          {
-                            $('#i').html(data.it[0].ItemCode + " - " + (data.te[0].ItemID+1) + "   to   " + data.it[0].ItemCode + " - " + (parseInt(quan) + parseInt(data.te[0].ItemID)));
-                          }
+
+                            $('#i').html(data.it[0].ItemCode + " - " + "BATCH - "+(data.te[0].ItemID+1));
+
                         }
-				
+
 
 
                         tbl.clear().draw();
 
                         $.each(data.iDetails, function(key, val){
-                          alert(val.ItemTypeID);
+
                           tbl.row.add([
                             '<input type = "hidden" value = "'+val.DateTime+'">',
-                            val.ItemCode+' - ' + val.ItemID,
+                            val.ItemCode+' - BATCH - ' + val.ItemID,
                             val.ItemName,
+                            val.ItemQuantity,
                             val.ItemStatus,
                             '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick="modalEdit('+val.ItemID+', '+val.ItemTypeID+')" ><i class="fa fa-pencil"></i></button> <button class="btn btn-xs btn-danger btn-flat" class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#delete" onclick="modalDelete('+val.ItemID+', '+val.ItemTypeID+')" ><i class="fa fa-remove"></i></button>'
                          ]).draw(false);
-                        }); 
+                        });
 
                       if (data.messages != null) {
-                 
-                        
-                        $('#Messages').append('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-ban"></i> Warning!</h4><b></b></div>');  
+
+
+                        $('#Messages').append('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-ban"></i> Warning!</h4><b></b></div>');
                         $('#Messages').fadeIn().delay(3000).fadeOut();
                         $.each(data.messages, function(key, val){
                             $('#Messages div b').append(val + '<br>');
                         });
                       }
-                       
+
                       else {
                         $('#SuccessBox').html('<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Success!</h4>Record has been successfully added</div>');
-                          $('#SuccessBox').fadeIn().delay(1000).fadeOut();  
+                          $('#SuccessBox').fadeIn().delay(1000).fadeOut();
                       }
-                                          
+
                       }
                     });
-					}
                     $('#txtQuantity').val("");
                     $('#txtItemType').val("");
 
@@ -406,14 +420,16 @@
 
                   $('#btnUpdate').click(function(){
                     $('#Messages1').html('');
-                    
+
                     $.ajax({
                       type: 'POST',
                       url: 'updateItemDetails',
                       data: { tID: $('#etxtTypeID').val(),
                               origID: $('#etxtOrigID').val(),
                               itemID: $('#etxtID').val(),
-                              itemStatus: $('#etxtStatus').val() },
+                              itemStatus: $('#etxtStatus').val() ,
+                              itemQuantity: $('#etxtQuan').val()
+                            },
                       dataType: 'JSON',
                       success: function(data){
 
@@ -423,8 +439,9 @@
                           console.log(val.ItemTypeID);
                           tbl.row.add([
                             '<input type = "hidden" value = "'+val.DateTime+'">',
-                            val.ItemCode+' - ' + val.ItemID,
+                            val.ItemCode+' - BATCH - ' + val.ItemID,
                             val.ItemName,
+                            val.ItemQuantity,
                             val.ItemStatus,
                             '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick="modalEdit('+val.ItemID+', '+val.ItemTypeID+')" ><i class="fa fa-pencil"></i></button> <button class="btn btn-xs btn-danger btn-flat" class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#delete" onclick="modalDelete('+val.ItemID+', '+val.ItemTypeID+')" ><i class="fa fa-remove"></i></button>'
                          ]).draw(false);
@@ -433,18 +450,18 @@
 
                         if (data.messages != null) {
                         //alert(JSON.stringify(data.messages));
-                        
 
-                            $('#Messages1').append('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-ban"></i> Warning!</h4><b></b></div>');  
+
+                            $('#Messages1').append('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-ban"></i> Warning!</h4><b></b></div>');
                               $('#Messages1').fadeIn().delay(3000).fadeOut();
                         $.each(data.messages, function(key, val){
                             $('#Messages1 div b').append(val + '<br>');
                         });
                       }
-                       
+
                       else {
                         $('#SuccessBox1').html('<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Success!</h4>Record has been successfully added</div>');
-                          $('#SuccessBox1').fadeIn().delay(1000).fadeOut();  
+                          $('#SuccessBox1').fadeIn().delay(1000).fadeOut();
 
 
                           $('#edit .close').click();
@@ -463,7 +480,7 @@
                     var tID = $('#dtxtTypeID').val();
                     var origID = $('#dtxtOrigID').val();
 
-                    
+
                     $.ajax({
                       type: 'POST',
                       url: 'deleteItemDetails',
@@ -477,8 +494,9 @@
                         $.each(data.uDetails, function(key, val){
                           tbl.row.add([
                             '<input type = "hidden" value = "'+val.DateTime+'">',
-                            val.ItemCode+' - ' + val.ItemID,
+                            val.ItemCode+' - BATCH - ' + val.ItemID,
                             val.ItemName,
+                            val.ItemQuantity,
                             val.ItemStatus,
                             '<button class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#edit" onclick="modalEdit('+val.ItemID+', '+val.ItemTypeID+')" ><i class="fa fa-pencil"></i></button> <button class="btn btn-xs btn-danger btn-flat" class="btn btn-xs btn-success btn-flat" data-toggle="modal" data-target="#delete" onclick="modalDelete('+val.ItemID+', '+val.ItemTypeID+')" ><i class="fa fa-remove"></i></button>'
                          ]).draw(false);
@@ -495,7 +513,7 @@
               </script>
 
               <script type="text/javascript">
-                
+
               function modalEdit(x,y)
               {
                 $.ajax({
@@ -508,6 +526,7 @@
                     $.each(data.iInfo, function(key, val){
                       $('#etxtType').val(val.ItemName);
                       $('#etxtTypeID').val(val.ItemTypeID);
+                       $('#etxtQuan').val(val.ItemQuantity);
                       $('#etxtCode').val(val.ItemCode);
                       $('#etxtID').val(val.ItemID);
                       $('#etxtOrigID').val(val.ItemID);
@@ -535,6 +554,7 @@
                       $('#dtxtType').val(val.ItemName);
                       $('#dtxtTypeID').val(val.ItemTypeID);
                       $('#dtxtCode').val(val.ItemCode);
+                      $('#dtxtQuan').val(val.ItemQuantity);
                       $('#dtxtID').val(val.ItemID);
                       $('#dtxtOrigID').val(val.ItemID);
                       $('#dtxtStatus').val(val.ItemStatus);
@@ -545,7 +565,18 @@
                 });
               }
 
+			//  $("#txtQuantity").keypress(function (evt) {
+			//	evt.preventDefault();
+			//	});
 
+			  $(document).keydown(function(e) {
+				var elid = $(document.activeElement).hasClass('textInput');
+				console.log(e.keyCode + ' && ' + elid);
+				//prevent both backspace and delete keys
+				if ((e.keyCode === 8 || e.keyCode === 46) && !elid) {
+				return false;
+				};
+			  });
 
               </script>
 
